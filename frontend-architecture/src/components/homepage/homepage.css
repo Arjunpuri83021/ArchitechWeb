@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Previous Button */
+
+  #carouselExampledark{
+    margin-top: 50px;
+    width: 100%;
+    height: 79vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+  }
+  .carousel-inner{
+    width: 100%;
+    height: 100%;
+  
+  }
+  .carousel-inner .carousel-item {
+
+    width: 100%;
+    height: 100%;
+  }
+@media(max-width:1400px){
+    #carouselExampledark {
+        
+        width: 100%;
+        height: 70vh;
+    }
+
+}  
+  
+@media(max-width:800){
+    #carouselExampledark {
+        
+        width: 100%;
+        height: 60vh;
+    }
+
+    
+}  
+@media(max-width:500){
+    #carouselExampledark {
+        
+        width: 100%;
+        height: 30vh;
+    }
+
+    
+}  
