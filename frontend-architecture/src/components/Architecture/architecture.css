@@ -1,0 +1,27 @@
+
+.category-buttons button{
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-weight: 550;
+  
+   
+}
+.container .row .mainsection{
+    width: 30%;
+    height: "300px";
+}
+
+
+@media (max-width:1000px){
+    .container .row .mainsection{
+        width: 45%;
+    }
+
+}
+@media (max-width:550px){
+    .container .row .mainsection{
+        width: 95%;
+    }
+
+}

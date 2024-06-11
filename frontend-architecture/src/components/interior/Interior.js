@@ -31,22 +31,22 @@ export default function Interior() {
   <h1>Made <span>my company</span> and our team </h1>
   <div className="main-gallery mt-5">
     <div className="inner-gallery">
-      <img src={menuItem2Image} alt />
+      <img src={menuItem2Image} alt='' />
     </div>
     <div className="inner-gallery">
-      <img src={menuItem3Image} alt />
+      <img src={menuItem3Image} alt='' />
     </div>
     <div className="inner-gallery">
-      <img src={menuItem4Image} alt />
+      <img src={menuItem4Image} alt=''  />
     </div>
     <div className="inner-gallery">
-      <img src={menuItem5Image} alt />
+      <img src={menuItem5Image} alt=''  />
     </div>
     <div className="inner-gallery">
-      <img src={menuItem6Image} alt />
+      <img src={menuItem6Image} alt='' />
     </div>
     <div className="inner-gallery">
-      <img src={menuItem7Image} alt />
+      <img src={menuItem7Image} alt=''  />
     </div>
   </div>
 </div>
@@ -54,25 +54,25 @@ export default function Interior() {
   <h1>our <span>services</span></h1>
   <div className="main-service">
     <div className="inner-service">
-      <img style={{height:"300px"}} src={menuItemAImage} alt />
+      <img style={{height:"300px"}} src={menuItemAImage} alt=''  />
       <h2>Work better</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum reprehenderit voluptas doloribus hic, unde, facilis explicabo ducimus non accusamus pariatur corporis voluptate consectetur amet quibusdam ut dolore quaerat quae incidunt?</p>
       <button className='btn btn-warning'> Read More</button>
     </div>
     <div className="inner-service">
-      <img style={{height:"300px"}} src={menuItemBImage} alt />
+      <img style={{height:"300px"}} src={menuItemBImage}  alt='' />
       <h2>Work better</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum reprehenderit voluptas doloribus hic, unde, facilis explicabo ducimus non accusamus pariatur corporis voluptate consectetur amet quibusdam ut dolore quaerat quae incidunt?</p>
       <button className='btn btn-warning'> Read More</button>
     </div>
     <div className="inner-service mt-4">
-      <img style={{height:"300px"}} src={menuItemCImage} alt />
+      <img style={{height:"300px"}} src={menuItemCImage} alt='' />
       <h2>Work better</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum reprehenderit voluptas doloribus hic, unde, facilis explicabo ducimus non accusamus pariatur corporis voluptate consectetur amet quibusdam ut dolore quaerat quae incidunt?</p>
       <button className='btn btn-warning'> Read More</button>
     </div>
     <div className="inner-service mt-4">
-      <img style={{height:"300px"}} src={menuItemDImage} alt />
+      <img style={{height:"300px"}} src={menuItemDImage} alt='' />
       <h2>Work better</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum reprehenderit voluptas doloribus hic, unde, facilis explicabo ducimus non accusamus pariatur corporis voluptate consectetur amet quibusdam ut dolore quaerat quae incidunt?</p>
       <button className='btn btn-warning'> Read More</button>
