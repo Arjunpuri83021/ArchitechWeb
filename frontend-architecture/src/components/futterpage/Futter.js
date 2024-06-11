@@ -15,7 +15,7 @@ export default function Futter() {
    
     
    <div id='futter' className="futter-content mt-5 bg-light">
-   <img  style={{height:"60px",marginLeft:"700px",width:"100px"}} src="./arclogo.jpg" alt="Logo" />
+   {/* <img  style={{height:"60px",marginLeft:"700px",width:"100px"}} src="./arclogo.jpg" alt="Logo" /> */}
   <div className="all-futter-content d-flex justify-content-between  text-dark">
     <div className="futter-content-text  ">
       <ul>
