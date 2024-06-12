@@ -31,7 +31,7 @@
  
 }
 .social-media i:hover {
-  background-color: #212020;
+  background-color: #5f5a44;
   font-size: 25px;
 }
 
@@ -192,4 +192,87 @@ width: 80%;
 .inner-service p{
   /* font-size: 1.5rem; */
   margin-bottom: 25px;
+}
+
+
+/* media q for futter */
+@media(max-width:1000px) {
+  
+  .futter-content-text{
+      width: 50%;
+      /* margin-left: 50px; */
+  }
+  
+  .all-futter-content{
+      flex-wrap: wrap;
+      width: 80%;
+      margin-left: 80px;
+  }
+  
+}
+@media(max-width:800px){
+  .all-futter-content{
+      flex-wrap: wrap;
+      width: 80%;
+      margin-left: 50px;
+  }
+
+
+}
+
+
+@media(max-width:700px) {
+  .futter-content-text{
+      width: 60%;
+      /* margin-left: 50px; */
+  }
+  .all-futter-content{
+      flex-wrap: wrap;
+      width: 90%;
+      margin-left: 50px;
+  } 
+}
+
+
+@media(max-width:450px) {
+ 
+  .futter-content-text{
+      width: 70%;
+      margin-left: 10px;
+  }
+  .all-futter-content{
+      flex-wrap: wrap;
+      width: 80%;
+      margin-left: 10px;
+  }
+
+}
+
+@media(max-width:400px) {
+  .futter-content-text{
+      width: 90%;
+      margin-left: 10px;
+  }
+  .all-futter-content{
+      flex-wrap: wrap;
+      /* width: 80%; */
+      margin-left: 10px;
+  }
+
+
+
+}
+
+@media (max-width:500px) {
+
+.futter-content-text{
+  width: 80%;
+  margin-left: 10px;
+}
+.all-futter-content{
+  flex-wrap: wrap;
+  width: 80%;
+  margin-left: 10px;
+}
+  
 }
