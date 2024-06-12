@@ -30,7 +30,7 @@ nav .container{
 
   
 }
-li a {
+ .links li a {
     position: relative;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.774);
@@ -39,7 +39,7 @@ li a {
     
 }
 
-li a::after {
+ .links li a::after {
     position: absolute;
     
     
@@ -52,7 +52,7 @@ li a::after {
     opacity: 0;
     transition: width 0.3s, opacity 0.3s;;
 }
-li a:hover::after {
+.links li a:hover::after {
     opacity: 1;
     width: 100%;
     

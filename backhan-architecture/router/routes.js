@@ -23,6 +23,9 @@ const storage = multer.diskStorage({
 router.get('/',controller.Products)
 
 router.post('/datapost',upload.array("image",10),controller.architecture)
+router.post('/interior',upload.array("image",10),controller.interior)
+router.get('/projects/interior',controller.interior)
+
 
 
 

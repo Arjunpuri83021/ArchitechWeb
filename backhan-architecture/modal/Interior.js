@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 
-const architectschema=mongoose.Schema({
+const interiorschema=mongoose.Schema({
 
     category:String,
     image:[String],
@@ -19,4 +19,4 @@ const architectschema=mongoose.Schema({
 })
 
 
-module.exports=mongoose.model('interiorlist',architectschema)
+module.exports=mongoose.model('architectlist',interiorschema)

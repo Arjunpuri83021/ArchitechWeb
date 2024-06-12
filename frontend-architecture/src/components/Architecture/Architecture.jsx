@@ -28,12 +28,12 @@ const Architecture = () => {
 
   const filterByCategory = (category) => {
     setSelectedCategory(category);
-    if (category === 'All') {
-      setFilteredData(data);
-    } else {
+    // if (category === 'All') {
+    //   setFilteredData(data);
+    // } else {  }
       const filtered = data.filter(project => project.category === category);
       setFilteredData(filtered);
-    }
+  
   };
 
   return (

@@ -1,5 +1,6 @@
 
 const Projects=require('../modal/Regmodals')
+const interior=require('../modal/Interior')
 
 
 exports.Products=(req,res)=>{
@@ -37,6 +38,43 @@ exports.architecture=async(req,res)=>{
 
 }
 
+
+
+// interior page
+
+
+exports.interior=async(req,res)=>{
+
+  const {category,Address,desc,date,Area,status}=req.body
+  
+
+  const imagePaths = req.files.map(file => file.filename);
+  const record= await new interior({
+      category:category,
+      image:imagePaths,
+      Address:Address,
+      desc:desc,
+      date:date,
+      Area:Area,
+      status:status
+
+
+
+
+  })
+  const saveddata= await record.save()
+  res.json({
+      data:saveddata,
+      message:"sucefully saved data"
+  })
+
+
+  
+
+}
+
+// architecture page find projects
+
 exports.finddata= async(req,res)=>{
 
 
@@ -48,6 +86,21 @@ exports.finddata= async(req,res)=>{
 
     })
 }
+
+// interior page find projects
+
+exports.finddata= async(req,res)=>{
+
+
+  const projectdata= await  interior.find()
+  res.json({
+      data:projectdata
+
+
+
+  })
+}
+
 
 
 exports.findbyid = async (req, res) => {

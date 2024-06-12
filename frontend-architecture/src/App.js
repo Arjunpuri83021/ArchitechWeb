@@ -7,12 +7,18 @@ import About from './components/about/About';
 import Interior from './components/interior/Interior';
 import Architecture from './components/Architecture/Architecture';
 import Projectparams from './components/projectparams/Projectparams';
+import Admin from './components/Admin/Admin';
+import { useLocation } from 'react-router-dom';
 
 
 const App = () => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+  ;
   return (
     <>
-    <Navbar/>
+
+    {!isAdminRoute && <Navbar />}
     <Routes>
 
 
@@ -22,11 +28,19 @@ const App = () => {
       <Route path='/interior' element={<Interior/>}></Route>
       <Route path='/Architecture' element={<Architecture/>}></Route>
       <Route path='/params/:id/' element={<Projectparams/>}/>
+      <Route path='/admin/*' element={<Admin/>}></Route>
 
 
 
     </Routes>
-    <Futter/>
+
+    
+
+
+    {!isAdminRoute && <Futter />}
+    
+
+
     
    
     </>

@@ -1,0 +1,65 @@
+*{
+    padding: 0;
+    margin: 0;
+
+}
+
+:root {
+    --background-color: #f0f0f0; /* You can change this color as needed */
+    --text-color: #333; /* Example of another custom property */
+  }
+  
+
+
+.admin-navbar-horizontal {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .admin-navbar-horizontal ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+  }
+  
+  .admin-navbar-horizontal li {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .admin-navbar-vertical {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    width: 200px;
+    height: 94vh;
+    
+  }
+  
+  .admin-navbar-vertical ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .admin-navbar-vertical li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .admin-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-content {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .admin-main {
+    flex: 1;
+    padding: 20px;
+  }
+  
