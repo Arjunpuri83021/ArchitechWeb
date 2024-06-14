@@ -1,11 +1,12 @@
 const express=require('express')
-const routerapi=require('./router/routes')
+const app=express()
+
 const mongoose=require('mongoose')
 const requirecors=require('cors')
 const path=require('path')
 const bodyParser = require('body-parser');
 
-const app=express()
+
 
 
 
@@ -22,15 +23,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/architecture').then(()=>{
 // app.use(express.json())
 app.use(requirecors())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+const routerapi=require('./router/routes')
 app.use(routerapi)
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/',(req,res)=>{
 
-res.send("hello manjeet")
-
-})
 
 
 
