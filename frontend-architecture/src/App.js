@@ -9,6 +9,9 @@ import Architecture from './components/Architecture/Architecture';
 import Projectparams from './components/projectparams/Projectparams';
 import Admin from './components/Admin/Admin';
 import { useLocation } from 'react-router-dom';
+import Privateroutesadmin from './components/Privateroutesadmin';
+import Addprojects from './components/Admin/innerforms/Addprojects';
+
 
 
 const App = () => {
@@ -28,8 +31,17 @@ const App = () => {
       <Route path='/interior' element={<Interior/>}></Route>
       <Route path='/Architecture' element={<Architecture/>}></Route>
       <Route path='/params/:id/' element={<Projectparams/>}/>
-      <Route path='/admin/*' element={<Admin/>}></Route>
-
+      <Route path='/admin/addprojects' element={<Addprojects/>}></Route>
+      <Route
+          path="/admin/*"
+          element={
+            <Privateroutesadmin>
+              <Admin />
+            
+            </Privateroutesadmin>
+          }
+        />
+      
 
 
     </Routes>
@@ -38,6 +50,7 @@ const App = () => {
 
 
     {!isAdminRoute && <Futter />}
+    
     
 
 

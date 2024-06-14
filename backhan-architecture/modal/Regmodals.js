@@ -1,22 +1,31 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
+const architectSchema = new mongoose.Schema({
+    category: {
+        type: String,
+        required: true
+    },
+    image: [String],
+    Address: {
+        type: String,
+        required: true
+    },
+    desc: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: String,
+        required: true
+    },
+    Area: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    }
+});
 
-const architectschema=mongoose.Schema({
-
-    category:String,
-    image:[String],
-    Address:String,
-    desc:String,
-    date:String,
-    Area:String,
-    status:String
-
-
-
-
-
-   
-})
-
-
-module.exports=mongoose.model('interiorlist',architectschema)
+module.exports = mongoose.model('architectlists', architectSchema);
