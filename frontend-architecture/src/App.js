@@ -9,6 +9,8 @@ import Architecture from './components/Architecture/Architecture';
 import Projectparams from './components/projectparams/Projectparams';
 import Admin from './components/Admin/Admin';
 import { useLocation } from 'react-router-dom';
+import Contactquery from './components/contactquery/Contactquery';
+
 
 
 const App = () => {
@@ -28,7 +30,9 @@ const App = () => {
       <Route path='/interior' element={<Interior/>}></Route>
       <Route path='/Architecture' element={<Architecture/>}></Route>
       <Route path='/params/:id/' element={<Projectparams/>}/>
+     
       <Route path='/admin/*' element={<Admin/>}></Route>
+      <Route path='/contact' element={<Contactquery/>}></Route>
 
 
 

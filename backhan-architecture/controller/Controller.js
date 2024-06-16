@@ -1,6 +1,7 @@
 
 const Projects=require('../modal/Regmodals')
 const interior=require('../modal/Interior')
+const contactquery=require('../modal/contactquery')
 
 
 exports.Products=(req,res)=>{
@@ -117,3 +118,31 @@ exports.findbyid = async (req, res) => {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   };
+
+
+  // contact query
+
+  
+exports.contactquery = async (req,res) => {
+  try {
+    const {name,email,subject,query} = req.body
+
+    const record = new contactquery({
+      name:name,
+      email:email,
+      subject:subject,
+      query:query
+    });
+
+    await record.save();
+    console.log(record);
+    res.json({
+      message: "Your query has been submitted.",
+      statusCode: 202,
+      data:record
+    });
+  } catch (error) {
+    console.error(error);
+    
+  }
+};

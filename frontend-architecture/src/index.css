@@ -195,6 +195,34 @@ width: 80%;
 }
 
 
+/* contact page */
+
+section {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+.contact-map{
+  margin-bottom: 1.8rem;
+}
+.contact-form{
+  margin: 1rem 0;
+}
+.form-control{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  padding: 1rem 0.6rem;
+  font-size: 0.95rem;
+  /* opacity: 0.8; */
+  margin: 0.3rem;
+  outline: none;
+}
+.form-group{
+  display: flex;
+}
+
+
 /* media q for futter */
 @media(max-width:1000px) {
   
