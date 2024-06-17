@@ -32,6 +32,11 @@ router.get('/',controller.Products)
 
 router.post('/datapost',upload.array("image",10),controller.architecture)
 
+// contact
+
+router.post('/contactquery',controller.contactquery)
+
+
 
 
 

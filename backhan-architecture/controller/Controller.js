@@ -1,85 +1,82 @@
+const Projects = require('../modal/Regmodals');
+const interior = require('../modal/Interior');
+const contactquery = require('../modal/contactquery');
 
-const Projects=require('../modal/Regmodals')
-
-
-
-exports.Products=(req,res)=>{
-    
-
-    res.send("hello manjeet")
-}
-
+exports.Products = (req, res) => {
+    res.send("hello manjeet");
+};
 
 // architecture page
-
-exports.architecture=async(req,res)=>{
-
-    const {category,Address,desc,date,Area,status}=req.body
-    
+exports.architecture = async (req, res) => {
+    const { category, Address, desc, date, Area, status } = req.body;
 
     const imagePaths = req.files.map(file => file.filename);
 
-    const record= await new Projects({
-        category:category,
-        image:imagePaths,
-        Address:Address,
-        desc:desc,
-        date:date,
-        Area:Area,
-        status:status
-
-
-
-
-    })
-    const saveddata= await record.save()
+    const record = await new Projects({
+        category: category,
+        image: imagePaths,
+        Address: Address,
+        desc: desc,
+        date: date,
+        Area: Area,
+        status: status
+    });
+    const saveddata = await record.save();
     res.json({
-        data:saveddata,
-        message:"sucefully saved data"
-    })
-
-
-    
-
-}
-exports.finddata= async(req,res)=>{
-
-
-  const projectdata= await  Projects.find()
-  res.json({
-      data:projectdata
-
-
-
-  })
-}
-
-exports.findbyid = async (req, res) => {
-  const id  = req.params.id;
-
-  try {
-    const project = await Projects.findById(id);
-    if (!project) {
-      return res.status(404).json({ message: 'Project not found' });
-    }
-    res.json(project);
-  } catch (error) {
-    console.error('Error fetching project by ID:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
+        data: saveddata,
+        message: "successfully saved data"
+    });
 };
 
+exports.finddata = async (req, res) => {
+    const projectdata = await Projects.find();
+    res.json({
+        data: projectdata
+    });
+};
 
-// interior page
+exports.findbyid = async (req, res) => {
+    const id = req.params.id;
 
+    try {
+        const project = await Projects.findById(id);
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+        res.json(project);
+    } catch (error) {
+        console.error('Error fetching project by ID:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
 
+// contact query
+exports.contactquery = async (req, res) => {
+    try {
+        const { name, email, subject, query } = req.body;
 
-// architecture page find projects
+        const record = new contactquery({
+            name: name,
+            email: email,
+            subject: subject,
+            query: query
+        });
 
+        await record.save();
+        console.log(record);
+        res.json({
+            message: "Your query has been submitted.",
+            statusCode: 202,
+            data: record
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
 
+// interior page (to be implemented)
 
-// interior page find projects
+// architecture page find projects (to be implemented)
 
-
-
-
+// interior page find projects (to be implemented)
