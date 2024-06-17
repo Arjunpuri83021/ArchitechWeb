@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controller/Controller');
 const interiorcontroller=require('../controller/Interiorpage')
+const admincontroller=require('../controller/Admincontroller')
 const path=require('path')
 
 

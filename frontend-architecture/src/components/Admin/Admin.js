@@ -12,7 +12,18 @@ const Admin = () => {
   
   return (
     <>
-      <div className="admin-container">
+
+
+    
+
+
+
+
+
+
+
+
+      {/* <div className="admin-container">
         <div className="admin-content">
         <div className="admin-navbar-vertical">
       <ul>
@@ -34,7 +45,7 @@ const Admin = () => {
          
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
