@@ -2,10 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 const controller = require('../controller/Controller');
+const interiorcontroller=require('../controller/Interiorpage')
 const path=require('path')
 
 
-const multer=require('multer')
+const multer=require('multer');
+const Interior = require('../modal/Interior');
 
 
 const storage = multer.diskStorage({
@@ -20,11 +22,14 @@ const storage = multer.diskStorage({
   const upload = multer({ storage: storage });
 
 
+
+  // architecture page
+
+
+
 router.get('/',controller.Products)
 
 router.post('/datapost',upload.array("image",10),controller.architecture)
-router.post('/interior',upload.array("image",10),controller.interior)
-router.get('/projects/interior',controller.interior)
 
 // contact
 
@@ -41,6 +46,12 @@ router.get('/findbyid/:id',controller.findbyid)
 
 
 
+// Interior page
+
+
+router.post('/datapostinterior',upload.array("image",10),interiorcontroller.interior)
+router.get('/projects/finddatainterior',interiorcontroller.finddatainterior)
+router.get('/findbyid/:id',interiorcontroller.findbyidinterior)
 
 
 

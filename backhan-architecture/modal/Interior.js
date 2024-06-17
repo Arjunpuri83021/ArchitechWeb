@@ -19,4 +19,4 @@ const interiorschema=mongoose.Schema({
 })
 
 
-module.exports=mongoose.model('architectlist',interiorschema)
+module.exports=mongoose.model('interiorlist',interiorschema)

@@ -11,30 +11,12 @@
   
 
 
-.admin-navbar-horizontal {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-  }
-  
-  .admin-navbar-horizontal ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    float: right;
-  }
-  
-  .admin-navbar-horizontal li {
-    margin-right: 20px;
-    cursor: pointer;
-  }
   .admin-navbar-vertical {
     background-color: #444;
     color: #fff;
     padding: 10px;
     width: 200px;
-    height: 94vh;
+    height: 100vh;
     
   }
   
@@ -49,6 +31,8 @@
   }
 
   .admin-container {
+    width: 100%;
+    border: 2px solid red;
     display: flex;
     flex-direction: column;
   }
@@ -61,5 +45,6 @@
   .admin-main {
     flex: 1;
     padding: 20px;
+    border: 3px solid black;
   }
   
