@@ -1,11 +1,11 @@
 import React from 'react';
 import "./Admin.css";
 // import Adminhorizontal from './Adminhorizontal';
-import Adminvertical from './Adminvertical';
-import Adminhorizonatl from './Adminhorizonatl';
+// import Adminvertical from './Adminvertical';
+// import Adminhorizonatl from './Adminhorizonatl';
 import Addprojects from './innerforms/Addprojects';
-import Addinterior from './innerforms/Addinterior';
-import { Route, Routes} from 'react-router-dom';
+// import Addinterior from './innerforms/Addinterior';
+// import { Route, Routes} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Admin = () => {
@@ -22,8 +22,8 @@ const Admin = () => {
 
 
 
-
-      {/* <div className="admin-container">
+ 
+       <div className="admin-container">
         <div className="admin-content">
         <div className="admin-navbar-vertical">
       <ul>
@@ -45,7 +45,7 @@ const Admin = () => {
          
           </div>
         </div>
-      </div> */}
+      </div> *
     </>
   );
 }

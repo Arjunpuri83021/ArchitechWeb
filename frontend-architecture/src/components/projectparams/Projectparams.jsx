@@ -7,18 +7,24 @@ const Projectparams = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
-  const fetchById = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/findbyid/${id}`);
-      console.log(response.data);
-      setProduct(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  
 
   useEffect(() => {
-    fetchById();
+
+    const fetchById = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/findbyid/${id}`);
+        console.log(response.data);
+        setProduct(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
+    fetchById()
+
+
+    
   }, [id]);
 
   return (
