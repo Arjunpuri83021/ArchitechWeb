@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Addarchitecturedata from './Addarchitecturedata';
 
 const Addprojects = () => {
     const [category, setCategory] = useState("");
@@ -42,10 +43,10 @@ const Addprojects = () => {
     };
 
     return (
-        <div className="container mt-3 ">
-            <h2>Add projects</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3 row">
+        <div  className="container  mt-3 d-flex align-items-center flex-column ">
+            <h2>Add Architecture projects </h2>
+            <form onSubmit={handleSubmit} className='w-50 border p-3 shadow '>
+                <div className="mb-3 row ">
                     <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label>
                     <div className="col-sm-10">
                         <input type="text" className="form-control" id="inputCategory" placeholder="Category" onChange={(e) => setCategory(e.target.value)} />
@@ -78,7 +79,7 @@ const Addprojects = () => {
                 <div className="mb-3 row">
                     <label htmlFor="inputDescription" className="col-sm-2 col-form-label">Description</label>
                     <div className="col-sm-10">
-                        <textarea className="form-control" id="inputDescription" placeholder="Description" rows="3" onChange={(e) => setDesc(e.target.value)}></textarea>
+                        <textarea className="form-control " id="inputDescription" placeholder="Description" rows="3" onChange={(e) => setDesc(e.target.value)}></textarea>
                     </div>
                 </div>
                 <div className="mb-3 row">
@@ -90,7 +91,10 @@ const Addprojects = () => {
                 <button type="submit" className="btn btn-danger ">Submit</button>
                 
             </form>
+            <Addarchitecturedata/>
+        
         </div>
+       
     );
 };
 

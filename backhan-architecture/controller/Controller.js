@@ -1,6 +1,6 @@
 const Projects = require('../modal/Regmodals');
-const interior = require('../modal/Interior');
-const contactquery = require('../modal/contactquery');
+
+
 
 exports.Products = (req, res) => {
     res.send("hello manjeet");
@@ -50,30 +50,39 @@ exports.findbyid = async (req, res) => {
     }
 };
 
-// contact query
-exports.contactquery = async (req, res) => {
-    try {
-        const { name, email, subject, query } = req.body;
 
-        const record = new contactquery({
-            name: name,
-            email: email,
-            subject: subject,
-            query: query
-        });
 
-        await record.save();
-        console.log(record);
-        res.json({
-            message: "Your query has been submitted.",
-            statusCode: 202,
-            data: record
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+// delete project
+exports.deletearchitectureprojects= async (req,res)=>{
+
+
+    try{
+  
+      const id=req.params.id
+     await  Projects.deleteOne({_id:id})
+     return res.json({
+      message:"user delete successfully",
+      status:200
+     })
+  
+  
+  
     }
-};
+    catch (error){
+      next(error)
+  
+  
+    }
+   
+  
+  
+  
+  
+  
+  
+  }
+
+// contact query
 
 // interior page (to be implemented)
 

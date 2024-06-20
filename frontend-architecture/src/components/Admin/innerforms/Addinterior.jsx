@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Addinteriorpagedata from './adminnavbar/Addinteriorpagedata';
+
 
 const Addinterior = () => {
     const [category, setCategory] = useState("");
@@ -42,9 +44,9 @@ const Addinterior = () => {
     };
 
     return (
-        <div className="container mt-3 ">
-            <h2>Add projects</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="container mt-3  d-flex align-items-center flex-column">
+            <h2>Add Interior projects</h2>
+            <form onSubmit={handleSubmit} className='w-50  border p-3 shadow'>
                 <div className="mb-3 row">
                     <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label>
                     <div className="col-sm-10">
@@ -90,6 +92,8 @@ const Addinterior = () => {
                 <button type="submit" className="btn btn-danger ">Submit</button>
                 
             </form>
+            <Addinteriorpagedata/>
+            
         </div>
     );
 };

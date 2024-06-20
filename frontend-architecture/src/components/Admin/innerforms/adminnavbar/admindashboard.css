@@ -1,0 +1,17 @@
+.maindashboard {
+    display: flex;
+    height: 100vh;
+}
+
+.admin-navbar {
+    width: 200px;
+}
+
+.routes {
+    flex: 1;
+    margin-left: 200px; 
+    padding: 20px;
+    
+    overflow-y: auto;
+
+}

@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaYoutube, FaPinterest, FaBars } from 'react-icons/fa';
+import { useContext } from 'react';
+import { Logincontext } from '../Admin/Logincontext/Adminlogincontext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const{adminlogin,setadminlogin}=useContext(Logincontext)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -12,6 +15,7 @@ const Navbar = () => {
 
   return (
     <>
+    
       <nav>
         <div className="container">
           <div className="heading">
