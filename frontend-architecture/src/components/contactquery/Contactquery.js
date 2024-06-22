@@ -5,14 +5,14 @@ import React, {  useState } from 'react'
 export default function Contactquery() {
     const [name,setName]=useState('')
     const [email,setEmail]=useState('')
-    const [subject,setSubject]=useState('')
+    
     const [query,setQuery]=useState('')
     const [message,setMessage]=useState('')
 
     function handleContact(e){
         e.preventDefault()
 
-        const formData ={name,email,subject,query}
+        const formData ={name,email,query}
 
         fetch('http://localhost:5000/contactquery',{
             method:"POST",
@@ -23,7 +23,6 @@ export default function Contactquery() {
             setMessage(data.message)
             setName('')
             setEmail('')
-            setSubject('')
             setQuery('')
             setMessage('')
             e.target.reset()
@@ -65,7 +64,6 @@ export default function Contactquery() {
                                 <input onChange={(e)=>{setName(e.target.value) }} type="text" className="form-control" placeholder="Full name" />
                                 <input onChange={(e)=>{setEmail(e.target.value) }} type="email" className="form-control" placeholder="Email address" />
                             </div>
-                            <input onChange={(e)=>{setSubject(e.target.value) }} type="text" className="form-control" placeholder="Subject" />
                             <textarea onChange={(e)=>{setQuery(e.target.value) }} rows={5} className="form-control" placeholder="Tell about your Query " defaultValue={""} />
                             <button type="submit" className="btn btn-danger ms-5 mt-3">Submit Query</button>
                             <p>{message}</p>

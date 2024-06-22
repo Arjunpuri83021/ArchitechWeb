@@ -15,3 +15,12 @@
     overflow-y: auto;
 
 }
+.nav-top{
+    width: calc(100% - 200px);
+    position: absolute;
+    background-color: white;
+
+    top: 0;
+    right: 0;
+    
+}

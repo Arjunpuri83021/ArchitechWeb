@@ -6,6 +6,9 @@ import { Logincontext } from '../../Logincontext/Adminlogincontext'
 import Addinterior from '../Addinterior'
 import Dashboard from '../Dashboard'
 import { useNavigate } from 'react-router-dom'
+import Contactquery from '../../contactpage/Contactquery'
+import { ToastContainer} from 'react-toastify';
+
 
 
 
@@ -27,6 +30,7 @@ const Admindashboard = () => {
    <>
    {adminlogin ?
    <div className="maindashboard">
+   
 
 
    <div className="admin-navbar vh-100  text-black position-fixed">
@@ -44,7 +48,7 @@ const Admindashboard = () => {
                     <Link className="nav-link text-black" to="/admin/Addinterior">Interior</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link text-black" to="/admin/settings">Query</Link>
+                    <Link className="nav-link text-black" to="/admin/contactquery">Query</Link>
                 </li>
                 <div className="button m-3"><button onClick={handlelogout} className='btn btn-success'>logout</button></div>
                 
@@ -57,6 +61,8 @@ const Admindashboard = () => {
             <Routes>
             <Route path='/admin/Addprojects' element={<Addprojects/>}/>
             <Route path='/admin/Addinterior' element={<Addinterior/>}/>
+            <Route path='/admin/contactquery' element={<Contactquery/>}/>
+
 
 
 
@@ -67,7 +73,10 @@ const Admindashboard = () => {
 
 
         </div>
+        <ToastContainer />
         </div>
+
+
          :null}
    </>
   )

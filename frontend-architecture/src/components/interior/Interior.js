@@ -40,6 +40,7 @@ const Interior = () => {
   return (
     <div className="container">
       <div className="category-buttons container d-flex align-items-center justify-content-center gap-3 mt-2">
+      <button onClick={() => filterByCategory('')} className={!selectedCategory ? 'active' : ''}>All</button>
         {categories.map((category) => (
           <button 
             key={category} 
@@ -49,7 +50,7 @@ const Interior = () => {
             {category}
           </button>
         ))}
-        <button onClick={() => filterByCategory('')} className={!selectedCategory ? 'active' : ''}>All</button>
+       
       </div>
       <div className="row m-2 d-flex align-items-center justify-content-around flex-wrap">
         {filteredData.map((project) => (

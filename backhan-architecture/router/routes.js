@@ -5,6 +5,7 @@ const controller = require('../controller/Controller');
 const interiorcontroller=require('../controller/Interiorpage')
 const admincontroller=require('../controller/Admincontroller')
 const contactcontroller=require('../controller/Contactcontroller')
+const replycontroller=require('../controller/Replycontroller')
 const path=require('path')
 
 
@@ -67,6 +68,18 @@ router.post('/admin/adminlogin',admincontroller.adminlogin)
 // contact
 
 router.post('/contactquery',contactcontroller.contactquery)
+router.get('/contact/findcontactdata',contactcontroller.findquery)
+
+router.get('/contact/finddatabyidcontact/:id',contactcontroller.findbyidcontact)
+
+
+
+
+
+// reply to user
+
+
+router.post('/admin/reply/:queryid',replycontroller.Adminreply)
 
 
 

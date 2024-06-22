@@ -37,6 +37,15 @@ const Addprojects = () => {
 
             const data = await response.json();
             console.log(data);
+            setAddress("")
+            setDesc("")
+            setImages("")
+            setArea("")
+            setCategory("")
+            setDate("")
+
+e.target.reset()
+
         } catch (error) {
             console.error("Error:", error);
         }

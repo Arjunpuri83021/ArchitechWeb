@@ -4,13 +4,13 @@ const contactquery = require('../modal/contactquery');
 
 exports.contactquery = async (req, res) => {
     try {
-        const { name, email, subject, query } = req.body;
+        const { name, email, query } = req.body;
 
         const record = new contactquery({
             name: name,
             email: email,
-            subject: subject,
-            query: query
+            query: query,
+            status:"unread"
         });
 
         await record.save();
@@ -26,10 +26,28 @@ exports.contactquery = async (req, res) => {
     }
 };
 
-exports.findquery=(req,res)=>{
 
-
-
+exports.findquery= async (req,res)=>{
+   const find= await  contactquery.find()
+   res.json({
+    data:find,
+    message:"successfully find data"
+   })
 
 
 }
+
+exports.findbyidcontact = async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const contact = await contactquery.findById(id);
+        if (!contact) {
+            return res.status(404).json({ message: 'contact not found' });
+        }
+        res.json(contact);
+    } catch (error) {
+        console.error('Error fetching project by ID:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};

@@ -55,6 +55,9 @@ const Addarchitecturedata = () => {
         {showCard && (
         <div className="card d-flex ">
           {architecture.map((item, index) => (
+
+
+
             <div key={item._id} className="card-body mt-4 ">
               <form className="w-100 d-flex position-relative p-4 flex-column align-items-center ">
                 <div className="contentedit w-100 d-flex mb-5">
@@ -83,6 +86,11 @@ const Addarchitecturedata = () => {
                 </div>
               </form>
             </div>
+
+
+
+
+
           ))}
         </div>
         )}
