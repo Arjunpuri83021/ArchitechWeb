@@ -52,11 +52,13 @@ exports.findbyid = async (req, res) => {
 
 // contact query
 exports.contactquery = async (req, res) => {
+
+  // console.log(req.body)
     try {
-        const { name, email, subject, query } = req.body;
+        const {email, subject, query } = req.body;
 
         const record = new contactquery({
-            name: name,
+            
             email: email,
             subject: subject,
             query: query

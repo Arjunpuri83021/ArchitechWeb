@@ -11,7 +11,8 @@ export default function Contactquery() {
 
     function handleContact(e){
         e.preventDefault()
-
+          
+        // console.log(name,email,subject,query,message)
         const formData ={name,email,subject,query}
 
         fetch('http://localhost:5000/contactquery',{
