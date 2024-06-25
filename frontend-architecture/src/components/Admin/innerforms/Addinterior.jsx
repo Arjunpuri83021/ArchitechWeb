@@ -47,12 +47,27 @@ const Addinterior = () => {
         <div className="container mt-3  d-flex align-items-center flex-column">
             <h2>Add Interior projects</h2>
             <form onSubmit={handleSubmit} className='w-50  border p-3 shadow'>
-                <div className="mb-3 row">
-                    <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="inputCategory" placeholder="Category" onChange={(e) => setCategory(e.target.value)} />
-                    </div>
-                </div>
+            <div className="mb-3 row">
+      <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label>
+      <div className="col-sm-10">
+        <select
+          className="form-control"
+          id="inputCategory"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="" disabled>Select Category</option>
+          <option value="Category1">RESIDENTIAL </option>
+          <option value="Category2">OFFICES </option>
+          <option value="Category3">RETAIL </option>
+          <option value="Category3">RETAIL & ENTERTAINMENT </option>
+          <option value="Category3">INSTALLATION</option>
+          
+
+          {/* Add more options as needed */}
+        </select>
+      </div>
+    </div>
                 <div className="mb-3 row">
                     <label htmlFor="inputAddress" className="col-sm-2 col-form-label">Address</label>
                     <div className="col-sm-10">

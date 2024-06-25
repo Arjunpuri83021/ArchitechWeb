@@ -8,6 +8,7 @@ import Dashboard from '../Dashboard'
 import { useNavigate } from 'react-router-dom'
 import Contactquery from '../../contactpage/Contactquery'
 import { ToastContainer} from 'react-toastify';
+import GetDataofRegsiteruser from '../GetDataofRegsiteruser'
 
 
 
@@ -30,6 +31,9 @@ const Admindashboard = () => {
    <>
    {adminlogin ?
    <div className="maindashboard">
+   <div className="nav-top p-2">
+                        <button className='btn-fixed-right'> <Link style={{textDecoration:"none",color:"black"}} to={"/admin/registeruser"}>Form Fill For Carrie</Link></button>
+                    </div>
    
 
 
@@ -62,6 +66,8 @@ const Admindashboard = () => {
             <Route path='/admin/Addprojects' element={<Addprojects/>}/>
             <Route path='/admin/Addinterior' element={<Addinterior/>}/>
             <Route path='/admin/contactquery' element={<Contactquery/>}/>
+            <Route path='/admin/registeruser' element={<GetDataofRegsiteruser/>}/>
+
 
 
 

@@ -9,13 +9,15 @@ import Architecture from './components/Architecture/Architecture';
 import Projectparams from './components/projectparams/Projectparams';
 import Admin from './components/Admin/Admin';
 import { useLocation } from 'react-router-dom';
-import Contactquery from './components/contactquery/Contactquery';
+import Contactquery from './components/Admin/contactpage/Contactquery';
 // import Privateroutesadmin from './components/Privateroutesadmin';
 import Addprojects from './components/Admin/innerforms/Addprojects';
 // import Admindashboard from './components/Admin/innerforms/Admindashboard';
 import Admindashboard from './components/Admin/innerforms/adminnavbar/Admindashboard';
 import { Logincontext } from './components/Admin/Logincontext/Adminlogincontext';
 import { useState } from 'react';
+import Contact from './components/contact/Contact';
+
 
 const App = () => {
   const location = useLocation();
@@ -35,7 +37,9 @@ const App = () => {
           <Route path='/interior' element={<Interior />} />
           <Route path='/Architecture' element={<Architecture />} />
           <Route path='/params/:id/' element={<Projectparams />} />
-          <Route path='/contact' element={<Contactquery />} />
+          
+          <Route path='/contactcategory/*' element={<Contact/>} />
+
           
 
           
@@ -50,6 +54,7 @@ const App = () => {
         
         {!isAdminRoute && <Futter />}
       </Logincontext.Provider>
+      
     </>
   );
 }

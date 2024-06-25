@@ -15,12 +15,30 @@
     overflow-y: auto;
 
 }
-.nav-top{
+
+.nav-top {
     width: calc(100% - 200px);
+    height: 50px;
     position: absolute;
     background-color: white;
-
+    z-index: 1;
     top: 0;
     right: 0;
-    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px; 
 }
+
+.nav-top .btn-fixed-right {
+    position: absolute;
+    right: 20px; 
+    background-color: rgb(69, 153, 164);
+    border: none;
+    padding: 10px 20px; 
+    color: white;
+    cursor: pointer;
+}
+
+
+
