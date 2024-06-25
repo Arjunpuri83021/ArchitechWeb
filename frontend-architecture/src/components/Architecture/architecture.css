@@ -1,27 +1,39 @@
+.category-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+   
+}
 
-.category-buttons button{
+.category-buttons button {
     border: none;
     background: none;
     font-size: 13px;
     font-weight: 550;
-  
-   
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.345);
 }
-.container .row .mainsection{
+
+.category-buttons button.active {
+    border-bottom: 2px solid #000;
+}
+
+.container .row .mainsection {
     width: 30%;
-    height: "300px";
+    height: 300px;
 }
 
-
-@media (max-width:1000px){
-    .container .row .mainsection{
+@media (max-width: 1000px) {
+    .container .row .mainsection {
         width: 45%;
     }
-
 }
-@media (max-width:550px){
-    .container .row .mainsection{
+
+@media (max-width: 550px) {
+    .container .row .mainsection {
         width: 95%;
     }
-
 }

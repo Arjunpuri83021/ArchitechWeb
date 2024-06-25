@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { Link, } from 'react-router-dom'
+import { useContext } from 'react'
+import { Logincontext } from '../Admin/Logincontext/Adminlogincontext'
 
 
 
 export default function Futter() {
-
-  useEffect(() => {
-
-  }, [])
+  const{adminlogin,setadminlogin}=useContext(Logincontext)
 
 
   return (

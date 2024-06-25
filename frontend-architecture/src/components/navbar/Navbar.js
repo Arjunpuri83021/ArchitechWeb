@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaYoutube, FaPinterest, FaBars } from 'react-icons/fa';
+// import { Logincontext } from '../Admin/Logincontext/Adminlogincontext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  // const { adminlogin, setadminlogin } = useContext(Logincontext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -22,12 +28,12 @@ const Navbar = () => {
           </div>
 
           <div className={`links ${isOpen ? 'active' : ''}`}>
-            <li><Link to="/">HOME</Link></li>
-            <li><Link to="/about">ABOUT</Link></li>
-            <li><Link to="/Architecture">ARCHITECTURE</Link></li>
-            <li><Link to="/interior">INTERIOR</Link></li>
-            <li><Link to="/publication">PUBLICATION</Link></li>
-            <li><Link to="/contact">CONTACT</Link></li>
+            <li><Link to="/" onClick={closeMenu}>HOME</Link></li>
+            <li><Link to="/about" onClick={closeMenu}>ABOUT</Link></li>
+            <li><Link to="/Architecture" onClick={closeMenu}>ARCHITECTURE</Link></li>
+            <li><Link to="/interior" onClick={closeMenu}>INTERIOR</Link></li>
+            <li><Link to="/publication" onClick={closeMenu}>PUBLICATION</Link></li>
+            <li><Link to="/contact" onClick={closeMenu}>CONTACT</Link></li>
           </div>
           
           <div className="sociaillinks">
