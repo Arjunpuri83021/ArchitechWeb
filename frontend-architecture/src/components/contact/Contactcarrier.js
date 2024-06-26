@@ -27,6 +27,14 @@ const Contactcarrier = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setFName('')
+        setEmail('')
+        setAddress('')
+        setDob('')
+        setMobNo('')
+        setProfile('')
+    
+        e.target.reset()
       });
   };
 

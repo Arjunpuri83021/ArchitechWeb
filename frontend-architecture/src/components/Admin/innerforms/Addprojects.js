@@ -65,13 +65,13 @@ e.target.reset()
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select Category</option>
-          <option value="Category1">MASTER PLANNING/TOWNSHIP </option>
-          <option value="Category2">HOUSING PROJECTS </option>
-          <option value="Category3">OFFICE BUILDING </option>
-          <option value="Category3">RETAIL & ENTERTAINMENT </option>
-          <option value="Category3">PRIVATE HOUSES </option>
-          <option value="Category3">EDUCATION </option>
-          <option value="Category3">VILLAS </option>
+          <option  value="MASTER PLANNING/TOWNSHIP">MASTER PLANNING/TOWNSHIP </option>
+          <option value="HOUSING PROJECTS ">HOUSING PROJECTS </option>
+          <option value="OFFICE BUILDING ">OFFICE BUILDING </option>
+          <option value="RETAIL & ENTERTAINMENT">RETAIL & ENTERTAINMENT </option>
+          <option value="PRIVATE HOUSES">PRIVATE HOUSES </option>
+          <option value="EDUCATION">EDUCATION </option>
+          <option value="VILLAS ">VILLAS </option>
 
           {/* Add more options as needed */}
         </select>

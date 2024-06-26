@@ -20,7 +20,7 @@ const Contactquery = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.message);
-        Toast.success(data.message);
+        // Toast.success(data.message);
         setName('');
         setEmail('');
         setQuery('');

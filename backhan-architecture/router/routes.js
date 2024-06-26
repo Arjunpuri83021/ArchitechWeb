@@ -38,7 +38,7 @@ router.post('/datapost',upload.array("image",10),controller.architecture)
 router.get('/finddata',controller.finddata)
 
 // delete projects
-router.delete('/deletedata/:id',controller.deletearchitectureprojects)
+// router.delete('/deletedata/:id',controller.deletearchitectureprojects)
 
 
 
