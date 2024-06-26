@@ -6,11 +6,12 @@ const interiorcontroller=require('../controller/Interiorpage')
 const admincontroller=require('../controller/Admincontroller')
 const contactcontroller=require('../controller/Contactcontroller')
 const replycontroller=require('../controller/Replycontroller')
+const registerusercontroller=require('../controller/registerusercontroller')
 const path=require('path')
 
 
 const multer=require('multer');
-const Interior = require('../modal/Interior');
+
 
 
 const storage = multer.diskStorage({
@@ -83,6 +84,15 @@ router.post('/admin/reply/:queryid',replycontroller.Adminreply)
 
 
 
+
+
+// Registered users
+
+
+
+
+router.post("/Registereducation", upload.single('profile'), registerusercontroller.registeruserforedu);
+router.get("/Registereducation/finddata",registerusercontroller.finddata)
 
 
 

@@ -13,7 +13,7 @@ export default function Futter() {
     <>
 
 
-<div id='futter' className="futter-content mt-5 bg-dark">
+<div id='futter' className="futter-content  bg-dark">
           <div className="futter-content-icon pt-4">
             <Link className="navbar-brand fs-1 text-danger" to="#">
               <i className="bi bi-bing me-2"></i> Sanjay puri

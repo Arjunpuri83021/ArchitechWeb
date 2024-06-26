@@ -33,7 +33,7 @@ const Navbar = () => {
             <li><Link to="/Architecture" onClick={closeMenu}>ARCHITECTURE</Link></li>
             <li><Link to="/interior" onClick={closeMenu}>INTERIOR</Link></li>
             <li><Link to="/publication" onClick={closeMenu}>PUBLICATION</Link></li>
-            <li><Link to="/contact" onClick={closeMenu}>CONTACT</Link></li>
+            <li><Link to="/contactcategory" onClick={closeMenu}>CONTACT</Link></li>
           </div>
           
           <div className="sociaillinks">
