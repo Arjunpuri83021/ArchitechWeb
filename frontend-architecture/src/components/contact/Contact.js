@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./contact.css";
 import Contactquery from './Contactquery';
 import Contactcarrier from './Contactcarrier';
+import Contactform from './Contactform';
 
 const Contact = () => {
   const [activeTab, setActiveTab] = useState('query');
@@ -24,7 +25,7 @@ const Contact = () => {
       </div>
       <div className="routeofcategory">
         {activeTab === 'query' && <Contactquery />}
-        {activeTab === 'carrier' && <Contactcarrier />}
+        {activeTab === 'carrier' && <Contactform />}
       </div>
     </div>
   );

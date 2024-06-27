@@ -14,6 +14,7 @@ const Admin = () => {
       e.preventDefault();
 
       const dataToSend = { email, password };
+     
 
       try {
           const response = await fetch('http://localhost:5000/admin/adminlogin', {
@@ -52,12 +53,12 @@ const Admin = () => {
                 <h3 className="mb-5">Sign in</h3>
 
                 <div className="form-outline mb-4">
-                  <input type="email"  id="typeEmailX-2" className="form-control form-control-lg" onChange={(e)=>{setEmail(e.target.value)}} />
+                  <input type="email"  id="typeEmailX-2" className="form-control form-control-lg" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
                   <label className="form-label" htmlFor="typeEmailX-2">Email</label>
                 </div>
 
                 <div className="form-outline mb-4">
-                  <input type="password" id="typePasswordX-2" className="form-control form-control-lg"  onChange={(e)=>{setPassword(e.target.value)}} />
+                  <input type="password" id="typePasswordX-2" className="form-control form-control-lg" value={password}  onChange={(e)=>{setPassword(e.target.value)}} />
                   <label className="form-label" htmlFor="typePasswordX-2">Password</label>
                 </div>
 

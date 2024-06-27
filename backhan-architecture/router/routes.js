@@ -7,6 +7,7 @@ const admincontroller=require('../controller/Admincontroller')
 const contactcontroller=require('../controller/Contactcontroller')
 const replycontroller=require('../controller/Replycontroller')
 const registerusercontroller=require('../controller/registerusercontroller')
+const sketchescontroller=require("../controller/Skechescontroller")
 const path=require('path')
 
 
@@ -22,9 +23,39 @@ const storage = multer.diskStorage({
       cb(null,Date.now()+ path.extname(file.originalname)); 
     },
   });
-  
-  const upload = multer({ storage: storage });
 
+
+
+  // condition for pdf {resume} and profile image upload
+
+  const fileFilter = (req, file, cb) => {
+    if (file.fieldname === 'resume') {
+      // Accept PDF files only for resume
+      if (file.mimetype === 'application/pdf') {
+        cb(null, true);
+      } else {
+        cb(new Error('Invalid file type, only PDFs are allowed for resume!'), false);
+      }
+    } else if (file.fieldname === 'profile') {
+      // Accept image files only for profile
+      if (file.mimetype.startsWith('image/')) {
+        cb(null, true);
+      } else {
+        cb(new Error('Invalid file type, only images are allowed for profile!'), false);
+      }
+    } else {
+      cb(new Error('Invalid fieldname!'), false);
+    }
+  };
+
+
+
+
+
+
+
+  
+  const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 
   // architecture page
@@ -91,12 +122,16 @@ router.post('/admin/reply/:queryid',replycontroller.Adminreply)
 
 
 
-router.post("/Registereducation", upload.single('profile'), registerusercontroller.registeruserforedu);
+router.post("/Registereducation", upload.fields([{ name: 'profile', maxCount: 1 }, { name: 'resume', maxCount: 1 }]), registerusercontroller.registeruserforedu);
 router.get("/Registereducation/finddata",registerusercontroller.finddata)
 
 
 
 
+// sketches 
+
+router.post('/sketchespost',upload.array("image",10),sketchescontroller.Sketches)
+router.get("/getdata",sketchescontroller.finddata)
 
 
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Toast } from 'bootstrap';
+import "./contact.css"
+import { Link } from 'react-router-dom';
 
 const Contactquery = () => {
   const [name, setName] = useState('');
@@ -21,6 +23,7 @@ const Contactquery = () => {
       .then((data) => {
         console.log(data.message);
         // Toast.success(data.message);
+        
         setName('');
         setEmail('');
         setQuery('');
@@ -32,58 +35,91 @@ const Contactquery = () => {
   return (
     <>
       <section>
-        <div className="container">
-          <div style={{ backgroundColor: '#ECEFF7' }} className="row d-flex align-items-center justify-content-around">
-            <div className="col-lg-6 border d-flex align-items-center flex-column justify-content-center">
-              <h1 className="text-center">Contact us</h1>
-              <p className="text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, fuga molestiae. Aspernatur, accusantium. Veritatis, vitae?
-              </p>
-              <div className="row d-flex align-items-center justify-content-center mb-3 gap-3">
-                <div style={{ height: '20vh' }} className="col-lg-3 border d-flex align-items-center justify-content-center flex-column p-4">
-                  <i style={{ fontSize: '2vw' }} className="bi bi-envelope"></i>
-                  <p>Email1234@gmail.com</p>
-                </div>
-                <div style={{ height: '20vh' }} className="col-lg-3 border d-flex align-items-center justify-content-center flex-column p-4">
-                  <i style={{ fontSize: '2vw' }} className="bi bi-telephone-inbound-fill"></i>
-                  <p>+918943554355</p>
-                </div>
-                <div style={{ height: '20vh' }} className="col-lg-3 border d-flex align-items-center justify-content-center flex-column p-4">
-                  <i style={{ fontSize: '2vw' }} className="bi bi-geo-alt-fill"></i>
-                  <p>P no 141 Shipra Path, Jaipur</p>
-                </div>
+      <div className="container  w-75 ">
+        <div className="row  d-flex  justify-content-between p-4 mb-2">
+            <div className="col-lg-5  p-5 border">
+              <h2>CONTACT US</h2>
+             <div className='d-flex align-items-center  '>   <i className="bi bi-geo-alt-fill d-flex p-3  " style={{fontSize:"2rem"}}> </i>  <div >  <h4 className='mt-4'>Address</h4>141, d-narayan vih0ar,sanga.ner jaipur</div>    
+             </div>
+             <div className=' d-flex align-items-center  '>  <i className="bi bi-telephone-inbound-fill d-flex p-3 " style={{fontSize:"2rem"}}></i> <div >  <h4 className='mt-4'>Phone</h4>+91 26345912569</div>    
+             </div>
+             <div className='d-flex align-items-center  '>   <i className="bi bi-envelope-arrow-up-fill d-flex p-3" style={{fontSize:"2rem"}}></i>  <div >  <h4 className='mt-4'>Email</h4>Sarvan@gmail.com</div>    
+             </div>
+
+             <div className='social-media mt-5 ms-3'>
+                <Link to="tel:+918426809853">
+                  <i className="bi bi-whatsapp "></i>
+                </Link>
+                <Link to="#">
+                  <i className="bi bi-instagram ms-2 text-danger"></i>
+                </Link>
+                <Link to="#">
+                  <i className="bi bi-youtube ms-2 text-danger"></i>
+                </Link>
               </div>
+
+             
+
+
+              
+
+
+
+
+
+
+
+
             </div>
-            <div className="col-lg-5 bg-dark rounded mt-2 mb-2">
-              <form onSubmit={handleContact} className="contact-form d-flex flex-column p-5 gap-3">
-                <h3 className="text-center text-light">Leave us message</h3>
-                <input
-                  onChange={(e) => setName(e.target.value)}
-                  type="text"
-                  className="form-control w-100"
-                  placeholder="Full name"
-                />
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  className="form-control"
-                  placeholder="Email address"
-                />
-                <textarea
-                  onChange={(e) => setQuery(e.target.value)}
-                  rows={5}
-                  className="form-control"
-                  placeholder="Tell about your Query"
-                  defaultValue=""
-                />
-                <button type="submit" className="btn btn-danger">
-                  Submit Query
-                </button>
+            <div className="col-lg-7  p-5 gap-4 border ">
+                <form action="" onSubmit={handleContact}>
+                <div className="input-field d-flex flex-column    ">
+                    <label style={{width:"10vw"}}  htmlFor="Your name" className='  '> Your Name</label>
+                    <input onChange={(e) => setName(e.target.value)}
+                 type="text" className='p-2 w-100'  />
+
+
+
+
+
+                </div>
+                <div className="input-field d-flex flex-column   mt-4 ">
+                    <label style={{width:"10vw"}}   htmlFor=""> Your Email</label>
+                    <input onChange={(e) => setEmail(e.target.value)}
+                  type="email" className='p-2 w-100 '/>
+
+                </div>
+                <div className="input-field d-flex flex-column   mt-4">
+                    <label style={{width:"10vw"}}   htmlFor="" className=''> Your Message</label>
+                    <textarea name="" id="" type="text" className='p-2 w-100  '   onChange={(e) => setQuery(e.target.value)}
+ rows="4" ></textarea>
+
+                </div>
+
+                <button style={{backgroundColor:""}} className='pt-3 pb-3 ps-5 pe-5 mt-4 '>SUBMIT</button>
                 
-              </form>
+            
+
+
+                </form>
+
+
+
             </div>
-          </div>
+
+
+
+
+
+
         </div>
+
+
+
+
+
+
+    </div>
       </section>
     </>
   );

@@ -25,10 +25,11 @@ const GetDataofRegsiteruser = () => {
       <thead className="bg-light">
         <tr>
           <th>Name</th>
-          <th>Address</th>
-          <th>DOB</th>
-          <th>Number</th>
-          <th>Actions</th>
+        
+         
+          <th> Mobile Number</th>
+          <th>Resume</th>
+          <th>Message</th>
         </tr>
       </thead>
       <tbody>
@@ -43,7 +44,7 @@ const GetDataofRegsiteruser = () => {
                   className="rounded-circle"
                 />
                 <div className="ms-3">
-                  <p className="fw-bold mb-1">{user.fname}</p>
+                  <p className="fw-bold mb-1">{user.name}</p>
                   <p className="text-muted mb-0">{user.email}</p>
                 </div>
               </div>

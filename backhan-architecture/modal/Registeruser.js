@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const RegisteredUserSchema = new mongoose.Schema({
-  fname: String,
+  name: String,
   email: String,
   mobnumber: Number,
-  dob: String,
-  address: String,
+  resume:String,
+  message:String,
   profileImage: String,
 });
 
