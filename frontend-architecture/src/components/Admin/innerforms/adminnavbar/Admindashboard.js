@@ -21,7 +21,7 @@ const Admindashboard = () => {
         e.preventDefault()
         localStorage.removeItem('adminlogin')
         setadminlogin(null)
-        navigate('/')
+        navigate('/admin')
 
 
 
@@ -65,8 +65,9 @@ const Admindashboard = () => {
 
 
         <div style={{backgroundColor:"#EAEBEF"}} className="routes">
-            <Dashboard/>
+           
             <Routes>
+                <Route path='/admin' element={<Dashboard/>}/>
             <Route path='/admin/Addprojects' element={<Addprojects/>}/>
             <Route path='/admin/Addinterior' element={<Addinterior/>}/>
             <Route path='/admin/contactquery' element={<Contactquery/>}/>

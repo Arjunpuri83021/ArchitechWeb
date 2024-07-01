@@ -3,15 +3,16 @@ const RegisterUser = require('../modal/Registeruser');
 exports.registeruserforedu = async (req, res) => {
     try {
       const { name, email, mobnumber, message } = req.body;
-      const profileImage = req.files.profile ? req.files.profile[0].path : null;
-      const resume = req.files.resume ? req.files.resume[0].path : null;
+      const profileImage = req.files.profile ? req.files.profile[0].originalname : null;
+      
+const resume = req.files.resume ? req.files.resume[0].originalname : null;
   
       const record = new RegisterUser({
         name,
       email,
       mobnumber,
       message,
-      profileImage,
+      image:profileImage,
       resume,
       });
   

@@ -12,7 +12,7 @@ exports.architecture = async (req, res) => {
 
     const imagePaths = req.files.map(file => file.filename);
 
-    const record = await new Projects({
+    const record = new Projects({
         category: category,
         image: imagePaths,
         Address: Address,

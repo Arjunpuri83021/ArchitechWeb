@@ -35,9 +35,9 @@ const Contactquery = () => {
   return (
     <>
       <section>
-      <div className="container  w-75 ">
-        <div className="row  d-flex  justify-content-between p-4 mb-2">
-            <div className="col-lg-5  p-5 border">
+      <div className="container  w-100">
+        <div className="row  d-flex  justify-content-center p-4 mb-2">
+            <div className="col-lg-5 col-sm-10 col-12  mt-2 p-5 border">
               <h2>CONTACT US</h2>
              <div className='d-flex align-items-center  '>   <i className="bi bi-geo-alt-fill d-flex p-3  " style={{fontSize:"2rem"}}> </i>  <div >  <h4 className='mt-4'>Address</h4>141, d-narayan vih0ar,sanga.ner jaipur</div>    
              </div>
@@ -71,10 +71,10 @@ const Contactquery = () => {
 
 
             </div>
-            <div className="col-lg-7  p-5 gap-4 border ">
+            <div className="col-lg-6 col-sm-10 mt-2 col-12  p-5 gap-4 border ">
                 <form action="" onSubmit={handleContact}>
                 <div className="input-field d-flex flex-column    ">
-                    <label style={{width:"10vw"}}  htmlFor="Your name" className='  '> Your Name</label>
+                    <label style={{width:"100px"}}  htmlFor="Your name" className='  '> Your Name</label>
                     <input onChange={(e) => setName(e.target.value)}
                  type="text" className='p-2 w-100'  />
 
@@ -84,13 +84,13 @@ const Contactquery = () => {
 
                 </div>
                 <div className="input-field d-flex flex-column   mt-4 ">
-                    <label style={{width:"10vw"}}   htmlFor=""> Your Email</label>
+                    <label  style={{width:"100px"}}   htmlFor=""> Your Email</label>
                     <input onChange={(e) => setEmail(e.target.value)}
                   type="email" className='p-2 w-100 '/>
 
                 </div>
                 <div className="input-field d-flex flex-column   mt-4">
-                    <label style={{width:"10vw"}}   htmlFor="" className=''> Your Message</label>
+                    <label  style={{width:"100px"}}    htmlFor="" className=''> Your Message</label>
                     <textarea name="" id="" type="text" className='p-2 w-100  '   onChange={(e) => setQuery(e.target.value)}
  rows="4" ></textarea>
 

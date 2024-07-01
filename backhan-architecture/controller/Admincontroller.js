@@ -31,12 +31,12 @@
     
       });
   
-      await record.save();
+     const saveddata= await record.save();
   
       res.json({
         message: "Successfully registered",
         status: "200",
-        data: record,
+        data: saveddata,
       });
     }
   };

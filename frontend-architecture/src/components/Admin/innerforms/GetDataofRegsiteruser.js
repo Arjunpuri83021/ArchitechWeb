@@ -25,8 +25,6 @@ const GetDataofRegsiteruser = () => {
       <thead className="bg-light">
         <tr>
           <th>Name</th>
-        
-         
           <th> Mobile Number</th>
           <th>Resume</th>
           <th>Message</th>
@@ -38,7 +36,7 @@ const GetDataofRegsiteruser = () => {
             <td>
               <div className="d-flex align-items-center">
                 <img
-                  src={`http://localhost:5000/uploads/${user.profileImage}`}
+                  src={`http://localhost:5000/${user.profileImage}`}
                   alt=""
                   style={{ width: '45px', height: '45px' }}
                   className="rounded-circle"
@@ -50,15 +48,15 @@ const GetDataofRegsiteruser = () => {
               </div>
             </td>
             <td>
-              <p className="fw-normal mb-1">{user.address}</p>
+              <p className="fw-normal mb-1">{user.resume}</p>
             </td>
             <td>
-              <span className="badge badge-success rounded-pill d-inline text-dark">{user.dob}</span>
+              <span className="badge badge-success rounded-pill d-inline text-dark">{user.message}</span>
             </td>
             <td>{user.mobnumber}</td>
             <td>
               <button type="button" className="btn btn-link btn-sm btn-rounded">
-                Edit
+                Reply
               </button>
             </td>
           </tr>

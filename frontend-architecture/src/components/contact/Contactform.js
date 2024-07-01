@@ -5,10 +5,11 @@ import "./contact.css";
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [mobNo, setMobNo] = useState('');
+  const [mobnumber, setMobnumber] = useState('');
   const [profile, setProfile] = useState(null);
   const [message, setMessage] = useState("");
   const [resume, setResume] = useState(null);
+    const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +17,7 @@ const ContactForm = () => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
-    formData.append('mobNo', mobNo);
+    formData.append('mobnumber', mobnumber);
     formData.append('message', message);
     formData.append('resume', resume);
     formData.append('profile', profile);
@@ -30,12 +31,17 @@ const ContactForm = () => {
       console.log(data);
       setName('');
       setEmail('');
-      setMobNo('');
+      setMobnumber('');
       setMessage('');
       setResume(null);
       setProfile(null);
       
       e.target.reset();
+      setSuccessMessage('Successfully applied!');
+   
+      
+
+      
     });
   };
 
@@ -47,6 +53,8 @@ const ContactForm = () => {
           <div className="row d-flex justify-content-center p-4 mb-2">
             <div className="col-lg-10 p-5 gap-4 border">
               <h2 className='w-50 border-bottom mb-4'>REGISTRATION FORM</h2>
+              {successMessage && <p className='text-success'>{successMessage}</p>}
+
               <form onSubmit={handleSubmit}>
                 <div className="input-field d-flex flex-column">
                   <label style={{width:"10vw"}} htmlFor="fname">Your Name *</label>
@@ -71,11 +79,11 @@ const ContactForm = () => {
                 <div className="input-field d-flex flex-column mt-4">
                   <label style={{width:"10vw"}} htmlFor="mobNo">Mobile Number *</label>
                   <input 
-                    type="text" 
+                    type="Number" 
                     id="mobNo" 
                     className='w-100 p-2'
-                    value={mobNo} 
-                    onChange={(e) => setMobNo(e.target.value)} 
+                    value={mobnumber} 
+                    onChange={(e) => setMobnumber(e.target.value)} 
                   />
                 </div>
                 <div className="input-field d-flex flex-column mt-4">

@@ -4,22 +4,21 @@ import { Logincontext } from '../Logincontext/Adminlogincontext';
 const Addarchitecturedata = () => {
   const [architecture, setArchitecture] = useState([]);
   const [showCard, setShowCard] = useState(false);
-  const{dataarchitecture,setarchitecture}=useContext(Logincontext)
+  const { dataarchitecture, setarchitecture } = useContext(Logincontext);
 
-  function handleFindArchitectureData() {
+  const handleFindArchitectureData = () => {
     fetch('http://localhost:5000/finddata')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data.length);
         setArchitecture(data.data);
-        localStorage.setItem('architectureprojectslength',data.data.length) 
-        setarchitecture(localStorage.getItem('architectureprojectslength'))
+        localStorage.setItem('architectureprojectslength', data.data.length);
+        setarchitecture(localStorage.getItem('architectureprojectslength'));
       })
       .catch((error) => {
         console.error('Error:', error);
-        // Handle error
       });
-  }
+  };
+
   const toggleCardVisibility = () => {
     setShowCard(!showCard);
   };
@@ -27,7 +26,6 @@ const Addarchitecturedata = () => {
   useEffect(() => {
     handleFindArchitectureData();
   }, []);
-
 
   const handleDeleteUser = async (id) => {
     try {
@@ -47,19 +45,15 @@ const Addarchitecturedata = () => {
   };
 
   return (
-    <>
-      <div className="container d-flex align-items-center flex-column">
+    <div className="container d-flex align-items-center flex-column">
       <button className='btn btn-success m-2' onClick={toggleCardVisibility}>
-          {showCard ? 'Hide' : 'Show'} Card
-        </button>  
-        {showCard && (
-        <div className="card d-flex ">
-          {architecture.map((item, index) => (
-
-
-
-            <div key={item._id} className="card-body mt-4 ">
-              <form className="w-100 d-flex position-relative p-4 flex-column align-items-center ">
+        {showCard ? 'Hide' : 'Show'} Card
+      </button>
+      {showCard && (
+        <div className="card d-flex">
+          {architecture.map((item) => (
+            <div key={item._id} className="card-body mt-4">
+              <form className="w-100 d-flex position-relative p-4 flex-column align-items-center">
                 <div className="contentedit w-100 d-flex mb-5">
                   <div className="images w-25 border">
                     <img src="/image/bg1.jpg" alt="pic" style={{ width: '100%' }} />
@@ -81,21 +75,15 @@ const Addarchitecturedata = () => {
                 </div>
                 <div className="buttons position-absolute border w-100 bottom-0 p-1 mt-3 d-flex gap-4">
                   <button type="button" className="btn btn-primary">Submit</button>
-                  <button type="button" onClick={()=>{handleDeleteUser(item._id)}} className="btn btn-danger">Delete</button>
+                  <button type="button" onClick={() => handleDeleteUser(item._id)} className="btn btn-danger">Delete</button>
                   <button type="button" className="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>
-
-
-
-
-
           ))}
         </div>
-        )}
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 

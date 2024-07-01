@@ -6,7 +6,7 @@ const RegisteredUserSchema = new mongoose.Schema({
   mobnumber: Number,
   resume:String,
   message:String,
-  profileImage: String,
+  image: String,
 });
 
 module.exports = mongoose.model('Registeruser', RegisteredUserSchema);

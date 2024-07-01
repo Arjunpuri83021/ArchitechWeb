@@ -66,12 +66,12 @@ e.target.reset()
         >
           <option value="" disabled>Select Category</option>
           <option  value="MASTER PLANNING/TOWNSHIP">MASTER PLANNING/TOWNSHIP </option>
-          <option value="HOUSING PROJECTS ">HOUSING PROJECTS </option>
-          <option value="OFFICE BUILDING ">OFFICE BUILDING </option>
+          <option value="HOUSING PROJECTS">HOUSING PROJECTS</option>
+          <option value="OFFICE BUILDING">OFFICE BUILDING</option>
           <option value="RETAIL & ENTERTAINMENT">RETAIL & ENTERTAINMENT </option>
           <option value="PRIVATE HOUSES">PRIVATE HOUSES </option>
           <option value="EDUCATION">EDUCATION </option>
-          <option value="VILLAS ">VILLAS </option>
+          <option value="VILLAS">VILLAS</option>
 
           {/* Add more options as needed */}
         </select>
@@ -108,11 +108,22 @@ e.target.reset()
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label htmlFor="inputStatus" className="col-sm-2 col-form-label">Status</label>
-                    <div className="col-sm-10">
-                        <input type="text" className="form-control" id="inputStatus" placeholder="Status" onChange={(e) => setStatus(e.target.value)} />
-                    </div>
-                </div>
+      <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Status</label>
+      <div className="col-sm-10">
+        <select
+          className="form-control"
+          id="inputCategory"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option value="" disabled>Select Category</option>
+          <option  value="Completed">Completed </option>
+          <option value="UnderConstruction">UnderConstruction</option>
+         
+          {/* Add more options as needed */}
+        </select>
+      </div>
+    </div>
                 <button type="submit" className="btn btn-danger ">Submit</button>
                 
             </form>

@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
       } else {
         cb(new Error('Invalid file type, only PDFs are allowed for resume!'), false);
       }
-    } else if (file.fieldname === 'profile') {
+    } else if (file.fieldname === 'image') {
       // Accept image files only for profile
       if (file.mimetype.startsWith('image/')) {
         cb(null, true);
@@ -84,8 +84,7 @@ router.get('/findbyid/:id',controller.findbyid)
 
 
 router.post('/datapostinterior',upload.array("image",10),interiorcontroller.interior)
-router.get('/projects/finddatainterior',interiorcontroller.finddatainterior)
-router.get('/findbyid/:id',interiorcontroller.findbyidinterior)
+router.get('/interiorfindbyid/:id',interiorcontroller.findbyidinterior)
 router.get('/interior/finddata',interiorcontroller.finddatainterior)
 
 
@@ -122,7 +121,7 @@ router.post('/admin/reply/:queryid',replycontroller.Adminreply)
 
 
 
-router.post("/Registereducation", upload.fields([{ name: 'profile', maxCount: 1 }, { name: 'resume', maxCount: 1 }]), registerusercontroller.registeruserforedu);
+router.post("/Registereducation", upload.fields([{ name: 'image', maxCount: 1 }, { name: 'resume', maxCount: 1 }]), registerusercontroller.registeruserforedu);
 router.get("/Registereducation/finddata",registerusercontroller.finddata)
 
 
@@ -130,7 +129,7 @@ router.get("/Registereducation/finddata",registerusercontroller.finddata)
 
 // sketches 
 
-router.post('/sketchespost',upload.array("image",10),sketchescontroller.Sketches)
+router.post('/sketchespost',upload.array("image",6),sketchescontroller.saveSketches)
 router.get("/getdata",sketchescontroller.finddata)
 
 
