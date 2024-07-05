@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, } from 'react-router-dom'
 import { useContext } from 'react'
 import { Logincontext } from '../Admin/Logincontext/Adminlogincontext'
+import "./futter.css"
 
 
 
@@ -13,13 +14,15 @@ export default function Futter() {
     <>
 
 
-<div id='futter' className="futter-content  bg-dark">
+<div id='futter' className="futter-content  bg-light">
           <div className="futter-content-icon pt-4">
             <Link className="navbar-brand fs-1 text-danger" to="#">
-              <i className="bi bi-bing me-2"></i> Sanjay puri
+            <div className="heading">
+            <img  style={{width:"300px",height:"90px"}} src="./logo2.png" alt="Logo" />
+          </div>
             </Link>
           </div>
-          <div className="all-futter-content d-flex justify-content-between text-light">
+          <div className="all-futter-content d-flex justify-content-between text-dark">
             <div className="futter-content-text">
               <ul>
                 <h4>About Us</h4>
@@ -34,31 +37,29 @@ export default function Futter() {
             {/* Learn More */}
             <ul style={{ listStyle: "none" }} className="footer-list">
               <li>
-                <p className="h4 footer-list-title text-light">Learn More</p>
+                <p className="h4 footer-list-title text-dark">Learn More</p>
               </li>
               <li>
-                <Link to="#" className="footer-link text-light">About Us</Link>
+                <Link to="#" className="footer-link text-dark">About Us</Link>
+              </li>
+             
+              <li>
+                <Link to="#" className="footer-link text-dark">Terms of Use</Link>
               </li>
               <li>
-                <Link to="#" className="footer-link text-light">Our Story</Link>
+                <Link to="#" className="footer-link text-dark">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="#" className="footer-link text-light">Terms of Use</Link>
+                <Link to="#" className="footer-link text-dark">About Us</Link>
               </li>
               <li>
-                <Link to="#" className="footer-link text-light">Privacy Policy</Link>
+                <Link to="#" className="footer-link text-dark">Our Story</Link>
               </li>
               <li>
-                <Link to="#" className="footer-link text-light">About Us</Link>
+                <Link to="#" className="footer-link text-dark">Terms of Use</Link>
               </li>
               <li>
-                <Link to="#" className="footer-link text-light">Our Story</Link>
-              </li>
-              <li>
-                <Link to="#" className="footer-link text-light">Terms of Use</Link>
-              </li>
-              <li>
-                <Link to="#" className="footer-link text-light">Privacy Policy</Link>
+                <Link to="#" className="footer-link text-dark">Privacy Policy</Link>
               </li>
             </ul>
 

@@ -8,6 +8,7 @@ const Interior = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [categories, setCategories] = useState([]);
+  
   const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {

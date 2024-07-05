@@ -21,7 +21,7 @@ const Navbar = () => {
       <nav>
         <div className="container">
           <div className="heading">
-            <img src="./arclogo.jpg" alt="Logo" />
+            <img  style={{width:"300px",height:"90px"}} src="./logo2.png" alt="Logo" />
           </div>
           <div className="toggle-button m-3" data-bs-toggle="button" onClick={toggleMenu}>
             <FaBars />
