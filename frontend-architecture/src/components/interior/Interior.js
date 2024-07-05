@@ -14,7 +14,7 @@ const Interior = () => {
   useEffect(() => {
     const handleInterior = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/projects/finddatainterior');
+        const response = await axios.get('http://localhost:5000/interior/finddata');
         const projects = response.data.data;
         setData(projects);
         setFilteredData(projects);
@@ -58,7 +58,7 @@ const Interior = () => {
           <div className="d-flex flex-column align-items-center mainsection m-2" key={project._id}>
             <Link 
               style={{ width: "100%", height: "250px", marginTop: "10px" }} 
-              to={`/params/${project._id}`}
+              to={`/paramsinterior/${project._id}`}
             >
               <img 
                 src={`http://localhost:5000/uploads/${project.image[0]}`} 

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const RegisteredUserSchema = new mongoose.Schema({
-  fname: String,
+  name: String,
   email: String,
   mobnumber: Number,
-  dob: String,
-  address: String,
-  profileImage: String,
+  resume:String,
+  message:String,
+  image: String,
 });
 
 module.exports = mongoose.model('Registeruser', RegisteredUserSchema);

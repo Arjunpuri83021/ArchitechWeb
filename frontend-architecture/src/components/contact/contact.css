@@ -1,7 +1,7 @@
 .contactcategory{
     width: 100%;
     
-    background-color: #F8F9FA;
+    background-color: white;
 
 }
 
@@ -19,7 +19,13 @@
     font-size: 16px;
     cursor: pointer;
     transition: border 0.3s ease-out; 
-    border: 1px solid black;
+    
+  }
+
+
+ form  button{
+    background-color: rgb(102, 102, 102);
+    border: none;
   }
   
  

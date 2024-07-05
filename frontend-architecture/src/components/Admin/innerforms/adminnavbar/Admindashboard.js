@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import Contactquery from '../../contactpage/Contactquery'
 import { ToastContainer} from 'react-toastify';
 import GetDataofRegsiteruser from '../GetDataofRegsiteruser'
+import Addsketches from './Addsketches'
 
 
 
@@ -20,7 +21,7 @@ const Admindashboard = () => {
         e.preventDefault()
         localStorage.removeItem('adminlogin')
         setadminlogin(null)
-        navigate('/')
+        navigate('/admin')
 
 
 
@@ -54,6 +55,9 @@ const Admindashboard = () => {
                 <li className="nav-item">
                     <Link className="nav-link text-black" to="/admin/contactquery">Query</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link text-black" to="/admin/Sketches">Sketches</Link>
+                </li>
                 <div className="button m-3"><button onClick={handlelogout} className='btn btn-success'>logout</button></div>
                 
             </ul>
@@ -61,12 +65,15 @@ const Admindashboard = () => {
 
 
         <div style={{backgroundColor:"#EAEBEF"}} className="routes">
-            <Dashboard/>
+           
             <Routes>
+                <Route path='/admin' element={<Dashboard/>}/>
             <Route path='/admin/Addprojects' element={<Addprojects/>}/>
             <Route path='/admin/Addinterior' element={<Addinterior/>}/>
             <Route path='/admin/contactquery' element={<Contactquery/>}/>
             <Route path='/admin/registeruser' element={<GetDataofRegsiteruser/>}/>
+            <Route path='/admin/Sketches' element={<Addsketches/>}/>
+
 
 
 

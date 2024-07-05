@@ -17,6 +17,7 @@ import Admindashboard from './components/Admin/innerforms/adminnavbar/Admindashb
 import { Logincontext } from './components/Admin/Logincontext/Adminlogincontext';
 import { useState } from 'react';
 import Contact from './components/contact/Contact';
+import Interiorparams from './components/projectparams/Interiorparams';
 
 
 const App = () => {
@@ -37,6 +38,9 @@ const App = () => {
           <Route path='/interior' element={<Interior />} />
           <Route path='/Architecture' element={<Architecture />} />
           <Route path='/params/:id/' element={<Projectparams />} />
+          <Route path='/paramsinterior/:id/' element={<Interiorparams />} />
+
+
           
           <Route path='/contactcategory/*' element={<Contact/>} />
 
