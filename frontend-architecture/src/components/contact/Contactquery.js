@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Toast } from 'bootstrap';
 import "./contact.css"
 import { Link } from 'react-router-dom';
 
@@ -22,11 +21,6 @@ const Contactquery = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.message);
-        // Toast.success(data.message);
-<<<<<<< HEAD
-=======
-        
->>>>>>> 4d8a03899cedf82c2470d47fb3f883b44346280f
         setName('');
         setEmail('');
         setQuery('');

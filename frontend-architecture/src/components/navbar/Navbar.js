@@ -21,11 +21,8 @@ const Navbar = () => {
       <nav>
         <div className="container">
           <div className="heading">
-<<<<<<< HEAD
-            <img  style={{width:"300px",height:"90px"}} src="./logo2.png" alt="Logo" />
-=======
-            <img  style={{width:"250px",height:"70px"}} src="./logo3.png" alt="Logo" />
->>>>>>> 4d8a03899cedf82c2470d47fb3f883b44346280f
+
+            <img style={{ width: "250px", height: "70px" }} src="./logo3.png" alt="Logo" />
           </div>
           <div className="toggle-button m-3" data-bs-toggle="button" onClick={toggleMenu}>
             <FaBars />
@@ -39,13 +36,13 @@ const Navbar = () => {
             <li><Link to="/publication" onClick={closeMenu}>PUBLICATION</Link></li>
             <li><Link to="/contactcategory" onClick={closeMenu}>CONTACT</Link></li>
           </div>
-          
+
           <div className="sociaillinks">
             <Link to="#"><FaPinterest /></Link>
             <Link to="#"><FaInstagram /></Link>
             <Link to="#"><FaYoutube /></Link>
           </div>
-          
+
         </div>
       </nav>
     </>
