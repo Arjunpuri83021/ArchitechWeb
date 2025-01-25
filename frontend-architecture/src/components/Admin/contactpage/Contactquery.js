@@ -52,13 +52,13 @@ const Contactquery = () => {
   const handlereplytouser=(e)=>{
     e.preventDefault()
 
-    console.log(queryid)
     const replydata={email,concern,reply}
     fetch(`http://localhost:5000/admin/reply/${queryid}`,{
       method:"POST",
       headers: { "Content-type": "application/json" },
       body:JSON.stringify(replydata)
   }).then((res)=>{return res.json()}).then((data)=>{
+        Contactquerydata() 
       console.log(data)
       
 
@@ -146,7 +146,7 @@ const Contactquery = () => {
 
         <textarea className="w-100 rounded form-control" placeholder="Describe your concern" onChange={(e)=>{setreply(e.target.value)}}></textarea>
       </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button data-bs-dismiss="modal" type="submit" className="btn btn-primary">Submit</button>
     </form>
                     </>
                   ) : (

@@ -66,7 +66,7 @@ const Interior = () => {
                 style={{ width: "100%", height: "100%" }} 
               />
             </Link>
-            <p>{project.Address}</p>
+            <p>{project.address}</p>
           </div>
         ))}
       </div>

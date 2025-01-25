@@ -8,7 +8,7 @@ const architectSchema = new mongoose.Schema({
     image: [String],
     Address: {
         type: String,
-        required: true
+       
     },
     desc: {
         type: String,
@@ -20,7 +20,7 @@ const architectSchema = new mongoose.Schema({
     },
     Area: {
         type: String,
-        required: true
+        
     },
     status: {
         type: String,

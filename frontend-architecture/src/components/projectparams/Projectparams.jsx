@@ -5,12 +5,11 @@ import './projectparams.css';
 
 const Projectparams = () => {
   const [product, setProduct] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const { id } = useParams();
 
-  
-
   useEffect(() => {
-
     const fetchById = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/findbyid/${id}`);
@@ -20,12 +19,32 @@ const Projectparams = () => {
         console.error('Error fetching data:', error);
       }
     };
-    
-    fetchById()
 
-
-    
+    fetchById();
   }, [id]);
+
+  // Handle image click to open popup
+  const openPopup = (index) => {
+    setActiveImageIndex(index);
+    setShowPopup(true);
+  };
+
+  // Close the popup
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
+  // Go to the next image
+  const nextImage = () => {
+    setActiveImageIndex((prevIndex) => (prevIndex + 1) % product.image.length);
+  };
+
+  // Go to the previous image
+  const prevImage = () => {
+    setActiveImageIndex(
+      (prevIndex) => (prevIndex - 1 + product.image.length) % product.image.length
+    );
+  };
 
   return (
     <>
@@ -41,6 +60,7 @@ const Projectparams = () => {
                   src={`http://localhost:5000/uploads/${img}`}
                   alt={`${product.name} ${index + 1}`}
                   className="img-fluid"
+                  onClick={() => openPopup(index)}  // Open popup on click
                 />
               </div>
             ))}
@@ -59,6 +79,26 @@ const Projectparams = () => {
                 <h6>Status <br /> <p className="small-text">{product.status}</p></h6>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="popup-overlay" onClick={closePopup}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <div className="popup-image-container">
+              <img
+                src={`http://localhost:5000/uploads/${product.image[activeImageIndex]}`}
+                alt={`Popup image ${activeImageIndex + 1}`}
+                className="popup-image"
+              />
+              <div className="popup-controls">
+                <button className="popup-prev" onClick={prevImage}>❮</button>
+                <button className="popup-next" onClick={nextImage}>❯</button>
+              </div>
+            </div>
+            <button className="popup-close" onClick={closePopup}>✖</button>
           </div>
         </div>
       )}

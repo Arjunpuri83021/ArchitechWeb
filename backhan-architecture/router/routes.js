@@ -69,7 +69,7 @@ router.post('/datapost',upload.array("image",10),controller.architecture)
 router.get('/finddata',controller.finddata)
 
 // delete projects
-// router.delete('/deletedata/:id',controller.deletearchitectureprojects)
+router.delete('/deletedata/:id',controller.deletearchitectureprojects)
 
 
 
@@ -86,6 +86,7 @@ router.get('/findbyid/:id',controller.findbyid)
 router.post('/datapostinterior',upload.array("image",10),interiorcontroller.interior)
 router.get('/interiorfindbyid/:id',interiorcontroller.findbyidinterior)
 router.get('/interior/finddata',interiorcontroller.finddatainterior)
+router.delete('/interiorDelete/:id',interiorcontroller.interiorDelete)
 
 
 // admin login
@@ -131,6 +132,7 @@ router.get("/Registereducation/finddata",registerusercontroller.finddata)
 
 router.post('/sketchespost',upload.array("image",6),sketchescontroller.saveSketches)
 router.get("/getdata",sketchescontroller.finddata)
+router.delete('/delete/:id', sketchescontroller.deleteSketchById);
 
 
 

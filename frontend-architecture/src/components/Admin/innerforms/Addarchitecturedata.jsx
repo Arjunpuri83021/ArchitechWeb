@@ -46,17 +46,14 @@ const Addarchitecturedata = () => {
 
   return (
     <div className="container d-flex align-items-center flex-column">
-      <button className='btn btn-success m-2' onClick={toggleCardVisibility}>
-        {showCard ? 'Hide' : 'Show'} Card
-      </button>
-      {showCard && (
+      
         <div className="card d-flex">
           {architecture.map((item) => (
             <div key={item._id} className="card-body mt-4">
               <form className="w-100 d-flex position-relative p-4 flex-column align-items-center">
                 <div className="contentedit w-100 d-flex mb-5">
                   <div className="images w-25 border">
-                    <img src="/image/bg1.jpg" alt="pic" style={{ width: '100%' }} />
+                    <img src={`http://localhost:5000/uploads/${item.image[0]}`} alt="pic" style={{ width: '100%' }} />
                   </div>
                   <div className="details w-75">
                     <div className="mb-3 d-flex">
@@ -82,7 +79,6 @@ const Addarchitecturedata = () => {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 };

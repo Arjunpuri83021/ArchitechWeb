@@ -35,6 +35,13 @@ exports.finddata = async (req, res) => {
     });
 };
 
+
+exports.deletearchitectureprojects = async(req,res)=>{
+    const id=req.params.id
+    const record= await Projects.findByIdAndDelete(id)
+    res.send(record)
+    console.log(record)
+}
 exports.findbyid = async (req, res) => {
     const id = req.params.id;
 

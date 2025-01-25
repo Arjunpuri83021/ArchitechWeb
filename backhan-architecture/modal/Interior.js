@@ -5,7 +5,7 @@ const interiorschema=mongoose.Schema({
 
     category:String,
     image:[String],
-    Address:String,
+    address:String,
     desc:String,
     date:String,
     Area:String,

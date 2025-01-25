@@ -4,36 +4,36 @@ const Interior=require('../modal/Interior')
 
 
 
-exports.interior=async(req,res)=>{
+exports.interior = async (req, res) => {
+  try {
+    const { category, address, desc, date, Area, status } = req.body;
 
-    const {category,Address,desc,date,Area,status}=req.body
-    
+    // Handle file uploads
+    const imagePaths = req.files ? req.files.map(file => file.filename) : [];
 
-    const imagePaths = req.files.map(file => file.filename);
+    // Save the record in the database
+    const record = new Interior({
+      category,
+      image: imagePaths,
+      address,
+      desc,
+      date,
+      Area,
+      status,
+    });
 
-    const record= await new Interior ({
-        category:category,
-        image:imagePaths,
-        Address:Address,
-        desc:desc,
-        date:date,
-        Area:Area,
-        status:status
+    const savedData = await record.save();
 
-
-
-
-    })
-    const saveddata= await record.save()
     res.json({
-        data:saveddata,
-        message:"sucefully saved data"
-    })
+      data: savedData,
+      message: "Successfully saved data",
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ message: "An error occurred", error: error.message });
+  }
+};
 
-
-    
-
-}
 
 exports.finddatainterior= async(req,res)=>{
 
@@ -45,6 +45,15 @@ exports.finddatainterior= async(req,res)=>{
   
   
     })
+  }
+
+
+  exports.interiorDelete= async(req,res)=>{
+    console.log(req.params.id)
+    const id = req.params.id
+    const record= await Interior.findByIdAndDelete(id)
+    res.send(record)
+    console.log(record)
   }
   
   exports.findbyidinterior = async (req, res) => {

@@ -1,36 +1,126 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-style: italic;
+/* Global Reset */
+* {
+  padding: 0;
+  margin: 0;
+  font-style: italic;
 }
-/* projectparams.css */
+
+/* Container styling */
 .container {
-    padding: 15px;
-  }
-  
-  .text-center {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .sideimages img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
+  padding: 15px;
+}
+
+.text-center {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.sideimages img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.small-text {
+  font-size: 12px;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: transparent;
+  border-radius: 10px;
+  width: 60%;  /* Makes the popup 90% width */
+  height: 90%; /* Makes the popup 90% height */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image Container */
+.popup-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image styling */
+.popup-image {
+  width: 100%;  /* Ensure image width fills the container */
+  height: 100%;  /* Ensure image height fills the container */
+  object-fit: contain;  /* Ensures the image keeps its aspect ratio */
+}
+
+/* Controls for navigation */
+.popup-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+/* Prev and Next buttons */
+.popup-prev, .popup-next {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.popup-prev:hover, .popup-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  color: #f44336; /* Red color for hover effect */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
   .border-end {
-    border-right: 1px solid #ddd;
-  }
-  
-  .small-text {
-    font-size: 12px;
-  }
-  
-  @media (max-width: 768px) {
-    .border-end {
       border-right: none;
       border-bottom: 1px solid #ddd;
-    }
   }
-  
+
+  /* Adjust popup for smaller screens */
+  .popup-content {
+      width: 95%;  /* Make the popup take up more space on small screens */
+      height: 90%;
+  }
+
+  .popup-image {
+      width: 100%;
+      height: auto;
+  }
+}
