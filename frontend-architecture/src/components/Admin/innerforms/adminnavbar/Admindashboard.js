@@ -10,6 +10,7 @@ import Contactquery from '../../contactpage/Contactquery'
 import { ToastContainer} from 'react-toastify';
 import GetDataofRegsiteruser from '../GetDataofRegsiteruser'
 import Addsketches from './Addsketches'
+import Addhomeimages from './Addhomeimages'
 
 
 
@@ -46,6 +47,9 @@ const Admindashboard = () => {
                 
             </div>
             <ul className="nav flex-column">
+            <li className="nav-item">
+                    <Link className="nav-link text-black" to="/admin/homeimages">Home Images</Link>
+                </li>
                 <li className="nav-item">
                     <Link className="nav-link text-black" to="/admin/Addprojects">Architecture</Link>
                 </li>
@@ -64,7 +68,7 @@ const Admindashboard = () => {
         </div>
 
 
-        <div style={{backgroundColor:"#EAEBEF"}} className="routes">
+        <div style={{backgroundColor:"#EAEBEF"}} className="routes mt-5">
            
             <Routes>
                 <Route path='/admin' element={<Dashboard/>}/>
@@ -73,6 +77,7 @@ const Admindashboard = () => {
             <Route path='/admin/contactquery' element={<Contactquery/>}/>
             <Route path='/admin/registeruser' element={<GetDataofRegsiteruser/>}/>
             <Route path='/admin/Sketches' element={<Addsketches/>}/>
+            <Route path='/admin/homeimages' element={<Addhomeimages/>}/>
 
 
 

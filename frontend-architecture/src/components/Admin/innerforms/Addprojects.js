@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import { Grid, TextField, Button, Typography, Box, FormControl, Select, MenuItem, FormHelperText } from '@mui/material';
+import { useDropzone } from 'react-dropzone'; // Import react-dropzone
 import Addarchitecturedata from './Addarchitecturedata';
+import { toast } from 'react-toastify'; // Import toastify
+
+// Initialize toast container at the top of your component or App.js
 
 const Addprojects = () => {
     const [category, setCategory] = useState("");
     const [desc, setDesc] = useState("");
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState([]); // Store files here
     const [area, setArea] = useState("");
     const [address, setAddress] = useState("");
     const [date, setDate] = useState("");
     const [status, setStatus] = useState("");
 
-    const handleImageChange = (e) => {
-        setImages(e.target.files);
+    const handleDrop = (acceptedFiles) => {
+        setImages(acceptedFiles); // Set the images state when files are dropped or selected
     };
 
     const handleSubmit = async (e) => {
@@ -24,19 +29,25 @@ const Addprojects = () => {
         formData.append('address', address);
         formData.append('date', date);
         formData.append('status', status);
-        
-        for (let i = 0; i < images.length; i++) {
-            formData.append('image', images[i]);
-        }
+
+        // Append multiple images to FormData
+        images.forEach((image) => {
+            formData.append('image', image);
+        });
 
         try {
             const response = await fetch('http://localhost:5000/datapost', {
                 method: 'POST',
-                body: formData
+                body: formData,
             });
 
             const data = await response.json();
-            console.log(data);
+
+            if (response.ok) {
+                toast.success('Project added successfully!');
+            } else {
+                toast.error('Failed to add project.');
+            }
 
             // Clear the form after submission
             setCategory("");
@@ -49,115 +60,164 @@ const Addprojects = () => {
             e.target.reset();
         } catch (error) {
             console.error("Error:", error);
+            toast.error('Error occurred while adding the project.');
         }
     };
 
+    // react-dropzone hook
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop: handleDrop,
+        multiple: true, // Allow multiple files to be selected
+        accept: 'image/*' // Only allow image files
+    });
+
     return (
-        <div className="container mt-3 d-flex align-items-center flex-column">
-            <h2>Add Architecture Projects</h2>
-            <form onSubmit={handleSubmit} className="w-50 border p-3 shadow">
-                <div className="mb-3 row">
-                    <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label>
-                    <div className="col-sm-10">
-                        <select
-                            className="form-control"
-                            id="inputCategory"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                        >
-                            <option value="" disabled>Select Category</option>
-                            <option value="MASTER PLANNING/TOWNSHIP">MASTER PLANNING/TOWNSHIP</option>
-                            <option value="HOUSING PROJECTS">HOUSING PROJECTS</option>
-                            <option value="OFFICE BUILDING">OFFICE BUILDING</option>
-                            <option value="RETAIL & ENTERTAINMENT">RETAIL & ENTERTAINMENT</option>
-                            <option value="PRIVATE HOUSES">PRIVATE HOUSES</option>
-                            <option value="EDUCATION">EDUCATION</option>
-                            <option value="VILLAS">VILLAS</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <label htmlFor="inputAddress" className="col-sm-2 col-form-label">Address</label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="inputAddress"
-                            placeholder="Address"
+        <Box sx={{ padding: 3 }}>
+            <form onSubmit={handleSubmit} className='bg-white p-3'>
+                <Typography
+                    variant="h4"
+                    align="start"
+                    gutterBottom
+                    sx={{
+                        borderBottom: '1px solid rgb(0, 0, 0)', // Border color
+                        paddingBottom: '8px'  // Padding below the text
+                    }}
+                >
+                    Add Architecture Projects
+                </Typography>
+
+                <Grid container spacing={3}>
+                    {/* Category */}
+                    <Grid item xs={12} md={6}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Category</div>
+                        <FormControl fullWidth>
+                            <Select
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                displayEmpty
+                                inputProps={{ 'aria-label': 'Category' }}
+                            >
+                                <MenuItem value="" disabled>Select Category</MenuItem>
+                                <MenuItem value="MASTER PLANNING/TOWNSHIP">MASTER PLANNING/TOWNSHIP</MenuItem>
+                                <MenuItem value="HOUSING PROJECTS">HOUSING PROJECTS</MenuItem>
+                                <MenuItem value="OFFICE BUILDING">OFFICE BUILDING</MenuItem>
+                                <MenuItem value="RETAIL & ENTERTAINMENT">RETAIL & ENTERTAINMENT</MenuItem>
+                                <MenuItem value="PRIVATE HOUSES">PRIVATE HOUSES</MenuItem>
+                                <MenuItem value="EDUCATION">EDUCATION</MenuItem>
+                                <MenuItem value="VILLAS">VILLAS</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Grid>
+
+                    {/* Address */}
+                    <Grid item xs={12} md={6}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Address</div>
+                        <TextField
+                            fullWidth
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
+                            variant="outlined"
                         />
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <label htmlFor="inputDate" className="col-sm-2 col-form-label">Date</label>
-                    <div className="col-sm-10">
-                        <input
+                    </Grid>
+
+                    {/* Date and Area */}
+                    <Grid item xs={12} md={6}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Date</div>
+                        <TextField
+                            fullWidth
                             type="date"
-                            className="form-control"
-                            id="inputDate"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
+                            variant="outlined"
+                            InputLabelProps={{
+                                shrink: true, // Make sure the label is always on top
+                            }}
                         />
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <label htmlFor="inputArea" className="col-sm-2 col-form-label">Area</label>
-                    <div className="col-sm-10">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="inputArea"
-                            placeholder="1234 sq/feet"
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Area (sq/feet)</div>
+                        <TextField
+                            fullWidth
                             value={area}
                             onChange={(e) => setArea(e.target.value)}
+                            variant="outlined"
                         />
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <label htmlFor="inputImages" className="col-sm-2 col-form-label">Images</label>
-                    <div className="col-sm-10">
-                        <input
-                            type="file"
-                            multiple
-                            className="form-control"
-                            id="inputImages"
-                            onChange={handleImageChange}
-                        />
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <label htmlFor="inputDescription" className="col-sm-2 col-form-label">Description</label>
-                    <div className="col-sm-10">
-                        <textarea
-                            className="form-control"
-                            id="inputDescription"
-                            placeholder="Description"
-                            rows="3"
+                    </Grid>
+
+                    {/* Images */}
+                    <Grid item xs={12} md={6}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Images</div>
+                        <div {...getRootProps()} style={{ border: '2px dashed #007BFF', padding: '20px', textAlign: 'center' }}>
+                            <input {...getInputProps()} />
+                            <p>Drag & drop files here, or click to select files</p>
+                        </div>
+                        <div>
+                            {/* Display number of files */}
+                            {images && images.length > 0 && (
+                                <p>{images.length} file{images.length > 1 ? 's' : ''} selected</p>
+                            )}
+                        </div>
+                    </Grid>
+
+                    {/* Description */}
+                    <Grid item xs={12}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Description</div>
+                        <TextField
+                            fullWidth
                             value={desc}
                             onChange={(e) => setDesc(e.target.value)}
-                        ></textarea>
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <label htmlFor="inputStatus" className="col-sm-2 col-form-label">Status</label>
-                    <div className="col-sm-10">
-                        <select
-                            className="form-control"
-                            id="inputStatus"
-                            value={status}
-                            onChange={(e) => setStatus(e.target.value)}
+                            variant="outlined"
+                            multiline
+                            rows={4}
+                        />
+                    </Grid>
+
+                    {/* Status */}
+                    <Grid item xs={12} md={6}>
+                        <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>Status</div>
+                        <FormControl fullWidth>
+                            <Select
+                                value={status}
+                                onChange={(e) => setStatus(e.target.value)}
+                                displayEmpty
+                                inputProps={{ 'aria-label': 'Status' }}
+                            >
+                                <MenuItem value="" disabled>Select Status</MenuItem>
+                                <MenuItem value="Completed">Completed</MenuItem>
+                                <MenuItem value="UnderConstruction">Under Construction</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Grid>
+
+                    {/* Submit Button */}
+                    <Grid item xs={12}>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            sx={{
+                                paddingTop: '8px',
+                                borderTop: '1px solid rgb(0, 0, 0)', // Border color
+                                backgroundColor: '#007BFF', // Set the background color
+                                '&:hover': {
+                                    backgroundColor: '#0056b3', // Darken the color when hovered
+                                },
+                                transition: 'background-color 0.3s ease', // Smooth transition on hover
+                                padding: '12px 16px', // Add padding to increase the button height
+                            }}
                         >
-                            <option value="" disabled>Select Status</option>
-                            <option value="Completed">Completed</option>
-                            <option value="UnderConstruction">Under Construction</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" className="btn btn-danger">Submit</button>
+                            Submit
+                        </Button>
+                    </Grid>
+
+                </Grid>
             </form>
+
+            {/* Render Add Architecture Data */}
             <Addarchitecturedata />
-        </div>
+        </Box>
     );
 };
 

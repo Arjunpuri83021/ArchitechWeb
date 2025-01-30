@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './homepage.css';
-import menuItem1Image from '../architercter img/building img 1.jpg';
-import menuItem2Image from '../architercter img/building img 2.jpg';
-import menuItem3Image from '../architercter img/bulding img 4.jpg';
 
 const Homepage = () => {
   const [sketchData, setSketchData] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [currentSketchImages, setCurrentSketchImages] = useState([]);
+  const [homeImagesData, setHomeImagesData] = useState([]); // New state to store home images
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +23,23 @@ const Homepage = () => {
       }
     };
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchHomeImagesData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/Homeimagespost');
+        if (response.ok) {
+          const data = await response.json();
+          setHomeImagesData(data.data); // Assuming 'data' contains the home images
+        } else {
+          console.error('Failed to fetch home images data');
+        }
+      } catch (error) {
+        console.error('Error fetching home images data:', error);
+      }
+    };
+    fetchHomeImagesData();
   }, []);
 
   const openPopup = (sketchImages, index) => {
@@ -50,23 +65,33 @@ const Homepage = () => {
   return (
     <>
       {/* Carousel Section */}
-      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" data-bs-wrap="true">
         <div className="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={0} className="active" aria-current="true" aria-label="Slide 1" />
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={1} aria-label="Slide 2" />
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={2} aria-label="Slide 3" />
+          {homeImagesData.length > 0 && homeImagesData[0].image && homeImagesData[0].image.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide-to={index}
+              className={index === 0 ? 'active' : ''}
+              aria-current={index === 0 ? 'true' : 'false'}
+              aria-label={`Slide ${index + 1}`}
+            />
+          ))}
         </div>
         <div className="carousel-inner">
-          <div className="image carousel-item active">
-            <img src={menuItem1Image} alt="Image" className="rounded-md " />
-          </div>
-          <div className="image carousel-item">
-            <img src={menuItem2Image} alt="Image" className="rounded-md " />
-          </div>
-          <div className="image carousel-item">
-            <img src={menuItem3Image} alt="Image" className="rounded-md " />
-          </div>
+          {homeImagesData.length > 0 && homeImagesData[0].image && homeImagesData[0].image.map((image, index) => (
+            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+              <img
+                src={`http://localhost:5000/uploads/${image}`} // Show each image
+                alt={`Home Image ${index + 1}`}
+                className="d-block w-100 border"
+                style={{ height: '90vh' }}
+              />
+            </div>
+          ))}
         </div>
+
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true" />
           <span className="visually-hidden">Previous</span>

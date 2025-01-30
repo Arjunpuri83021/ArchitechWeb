@@ -6,7 +6,7 @@ const architectSchema = new mongoose.Schema({
         required: true
     },
     image: [String],
-    Address: {
+    address: {
         type: String,
        
     },
@@ -18,7 +18,7 @@ const architectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Area: {
+    area: {
         type: String,
         
     },

@@ -8,6 +8,8 @@ const contactcontroller=require('../controller/Contactcontroller')
 const replycontroller=require('../controller/Replycontroller')
 const registerusercontroller=require('../controller/registerusercontroller')
 const sketchescontroller=require("../controller/Skechescontroller")
+const Homeimagescontroller=require("../controller/Homecontroller")
+
 const path=require('path')
 
 
@@ -65,6 +67,7 @@ const storage = multer.diskStorage({
 router.get('/',controller.Products)
 
 router.post('/datapost',upload.array("image",10),controller.architecture)
+router.put('/datapost/:id',upload.array("image",10),controller.updateArchitecture)
 
 router.get('/finddata',controller.finddata)
 
@@ -84,6 +87,8 @@ router.get('/findbyid/:id',controller.findbyid)
 
 
 router.post('/datapostinterior',upload.array("image",10),interiorcontroller.interior)
+router.put('/datapostinterior/:id',upload.array("image",10),interiorcontroller.updateInterior)
+
 router.get('/interiorfindbyid/:id',interiorcontroller.findbyidinterior)
 router.get('/interior/finddata',interiorcontroller.finddatainterior)
 router.delete('/interiorDelete/:id',interiorcontroller.interiorDelete)
@@ -136,7 +141,9 @@ router.delete('/delete/:id', sketchescontroller.deleteSketchById);
 
 
 
-
+router.post('/Homeimagespost',upload.array("image",6),Homeimagescontroller.saveHomeImages)
+router.get("/Homeimagespost",Homeimagescontroller.findHomeImages)
+router.delete('/Homeimagespost/delete/:id', Homeimagescontroller.deleteHomeImageById);
 
 
 

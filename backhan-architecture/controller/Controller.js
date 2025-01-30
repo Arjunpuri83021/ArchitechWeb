@@ -8,17 +8,17 @@ exports.Products = (req, res) => {
 
 // architecture page
 exports.architecture = async (req, res) => {
-    const { category, Address, desc, date, Area, status } = req.body;
+    const { category, address, desc, date, area, status } = req.body;
 
     const imagePaths = req.files.map(file => file.filename);
 
     const record = new Projects({
         category: category,
         image: imagePaths,
-        Address: Address,
+        address,
         desc: desc,
         date: date,
-        Area: Area,
+        area,
         status: status
     });
     const saveddata = await record.save();
@@ -26,6 +26,45 @@ exports.architecture = async (req, res) => {
         data: saveddata,
         message: "successfully saved data"
     });
+};
+// Update project by ID
+exports.updateArchitecture = async (req, res) => {
+    const { id } = req.params; // Get the project ID from the params
+    const { category, address, desc, date, area, status } = req.body;  // Get updated fields from the body
+
+    try {
+        // Find the project by ID and update it
+        const updatedProject = await Projects.findByIdAndUpdate(
+            id, // Project ID from params
+            { category, address, desc, date, area, status }, // Fields to update
+            { new: true } // Return the updated project
+        );
+
+        // If the project is not found
+        if (!updatedProject) {
+            return res.status(404).json({ message: "Project not found" });
+        }
+
+        // Handle file uploads (if any)
+        if (req.files && req.files.length > 0) {
+            const imagePaths = req.files.map(file => file.filename); // Get new image paths
+
+            // Update image paths in the project
+            updatedProject.image = imagePaths;
+
+            // Save the updated project again after image change
+            await updatedProject.save();
+        }
+
+        res.json({
+            data: updatedProject,
+            message: "Project successfully updated"
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error updating project", error });
+    }
 };
 
 exports.finddata = async (req, res) => {

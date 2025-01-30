@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FaTrash } from 'react-icons/fa'; // Import the trash icon from react-icons
+import { useDropzone } from 'react-dropzone'; // Import dropzone
+import { Box, Button, Grid, Typography } from '@mui/material'; // MUI components for layout
+import { toast } from 'react-toastify'; // Import toast from react-toastify
+
 
 const Addsketches = () => {
     const [sketches, setSketches] = useState([]);
@@ -24,15 +28,15 @@ const Addsketches = () => {
         fetchData();
     }, []);
 
-    const handleImageChange = (e) => {
-        setSketches(e.target.files); // Store selected files in state
+    const handleImageChange = (acceptedFiles) => {
+        setSketches(acceptedFiles); // Store selected files in state
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (sketches.length === 0) {
-            alert("Please select at least one image.");
+            toast.error("Please select at least one image."); // Display error toast
             return;
         }
 
@@ -56,13 +60,13 @@ const Addsketches = () => {
 
             // Clear the file input after successful submission
             setSketches([]);
-            document.getElementById('inputImages').value = null;
-            alert("Images uploaded successfully!");
+            toast.success("Images uploaded successfully!"); // Display success toast
 
             // Optionally, fetch updated data after upload
+            // fetchData();
         } catch (error) {
             console.error("Error:", error);
-            alert("An error occurred while uploading images. Please try again.");
+            toast.error("An error occurred while uploading images. Please try again."); // Display error toast
         }
     };
 
@@ -74,7 +78,7 @@ const Addsketches = () => {
             });
 
             if (response.ok) {
-                alert("Sketch deleted successfully!");
+                toast.success("Sketch deleted successfully!"); // Display success toast
                 // Remove the deleted sketch from the UI
                 setSketchData(prevData => prevData.filter(sketch => sketch._id !== id));
             } else {
@@ -82,65 +86,85 @@ const Addsketches = () => {
             }
         } catch (error) {
             console.error("Error deleting sketch:", error);
-            alert("An error occurred while deleting the sketch. Please try again.");
+            toast.error("An error occurred while deleting the sketch. Please try again."); // Display error toast
         }
     };
 
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop: handleImageChange,
+        multiple: true, // Allow multiple file selection
+        accept: 'image/*', // Only accept image files
+    });
+
     return (
         <div>
-            {/* Form for uploading images */}
+            {/* Form for uploading images using Dropzone */}
             <form onSubmit={handleSubmit} className="container mt-5">
-                <div className="row">
-                    <label htmlFor="inputImages" className="col-sm-2 col-form-label">Images</label>
-                    <div className="col-sm-10">
-                        <input
-                            type="file"
-                            multiple
-                            className="form-control"
-                            id="inputImages"
-                            onChange={handleImageChange}
-                        />
-                    </div>
+                <div {...getRootProps()} className="dropzone">
+                    <input {...getInputProps()} />
+                    <Box
+                        border="1px dashed #ccc"
+                        padding="20px"
+                        textAlign="center"
+                        marginBottom="20px"
+                    >
+                        <Typography variant="h6" color="textSecondary">
+                            Drag & drop images here, or click to select files
+                        </Typography>
+                    </Box>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+
+                <Button type="submit" variant="contained" color="primary">
+                    Submit
+                </Button>
             </form>
 
             {/* Display previously uploaded images */}
             <div className="mt-4">
-                <h3>Uploaded Sketches</h3>
+                <Typography variant="h4">Uploaded Sketches</Typography>
                 {sketchData.length > 0 ? (
-                    <div className="row">
+                    <Grid container spacing={3} mt={2}>
                         {sketchData.map((sketch, sketchIndex) => (
-                            <div key={sketch._id} className="col-md-6 mb-3">
-                                <div className="card">
-                                    <div className="card-header d-flex justify-content-between align-items-center">
-                                        <h5>Sketch {sketchIndex + 1}</h5>
-                                        <button
+                            <Grid item key={sketch._id} xs={12} sm={6} md={4}>
+                                <Box boxShadow={3} borderRadius="8px" overflow="hidden">
+                                    <Box
+                                        display="flex"
+                                        justifyContent="space-between"
+                                        padding="10px"
+                                        alignItems="center"
+                                        bgcolor="primary.main"
+                                    >
+                                        <Typography variant="body1" color="white">
+                                            Sketch {sketchIndex + 1}
+                                        </Typography>
+                                        <Button
+                                            variant="contained"
+                                            color="error"
                                             onClick={() => handleDelete(sketch._id)}
-                                            className="btn btn-danger"
                                         >
-                                            <FaTrash /> {/* Using React Icon here */}
-                                        </button>
-                                    </div>
-                                    <div className="card-body">
-                                        <div className="row">
+                                            <FaTrash />
+                                        </Button>
+                                    </Box>
+                                    <Box padding="10px">
+                                        <Grid container spacing={2}>
                                             {sketch.image.map((image, index) => (
-                                                <div key={index} className="col-md-3 mb-3">
+                                                <Grid item key={index} xs={4}>
                                                     <img
                                                         src={`http://localhost:5000/uploads/${image}`}
                                                         alt={`Sketch ${index + 1}`}
                                                         className="img-fluid"
+                                                        style={{ width: '100%' }}
                                                     />
-                                                </div>
+                                                </Grid>
                                             ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        </Grid>
+                                    </Box>
+                                </Box>
+                            </Grid>
                         ))}
-                    </div>
+                    </Grid>
                 ) : (
-                    <p>No sketches uploaded yet.</p>
+                    <Typography variant="body1">No sketches uploaded yet.</Typography>
                 )}
             </div>
         </div>
