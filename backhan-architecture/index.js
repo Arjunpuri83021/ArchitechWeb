@@ -3,6 +3,8 @@ const app=express()
 
 const mongoose=require('mongoose')
 const requirecors=require('cors')
+require("dotenv").config();
+
 const path=require('path')
 const bodyParser = require('body-parser');
 
@@ -11,13 +13,13 @@ const bodyParser = require('body-parser');
 
 
 // app.use(express.static('./public/upload'));
+mongoose
+.connect(process.env.DB_URI, {
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-mongoose.connect('mongodb://127.0.0.1:27017/architecture').then(()=>{
-    console.log("successsfully connected to the database");
-}).catch((error)=>{
-    console.log(`error in the datbase connection${error}`);
 
-})
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
